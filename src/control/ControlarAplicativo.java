@@ -4,35 +4,46 @@ import java.util.ArrayList;
 import model.SerialCom;
 
 public class ControlarAplicativo {
-    
+
     private ControlarSerialCom controleSerialCom = new ControlarSerialCom();
     private ArrayList<SerialCom> listSerialCom = new ArrayList<>();
-    private SerialCom serialCom = new SerialCom();
-    
-    public ControlarAplicativo(){
-        
+    private SerialCom serialCom;
+
+    public ControlarAplicativo() {
+
         //Obter lista de serial COM disponivel
         listSerialCom = controleSerialCom.getListaPorta();
-        
-        //verifica se existe porta serial COM
-        if( listSerialCom.size() != 0)
+
+        //verifica se a lista de portas não esta vazia
+        if (listSerialCom.size() != 0)
+        {
+            //Definindo propriedades da porta serial COM
+            serialCom = new SerialCom(listSerialCom.get(0).getNome(), 9600, 0);
             //Obter ID da porta
-            serialCom = controleSerialCom.getIdPorta( listSerialCom.get(1) );
-        else
+            serialCom = controleSerialCom.getIdPorta(serialCom);
+        } else {
             System.out.println("Sem porta serial COM");
-        
-        //Definindo propriedades da porta serial COM
-        serialCom.setTimeout(0);
-        serialCom.setBaudrate(9600);
-        
-        //Controlar porta serial
-        controleSerialCom.HabilitarEscrita(serialCom);
+        }
+
+        //Abrir porta para Leitura e escrita
         serialCom = controleSerialCom.AbrirPorta(serialCom);
-        controleSerialCom.EnviarString(serialCom, "Ola mundo!");
         
-        controleSerialCom.FecharCom();
+        //Iniciar Leitura
+        controleSerialCom.HabilitarLeitura();
+        controleSerialCom.LerDados();
         
+        //Enviar string 1
+        controleSerialCom.HabilitarEscrita();
+        controleSerialCom.EnviarString(serialCom, "Ola mundo! 1");
+        controleSerialCom.HabilitarLeitura();
+       
+        //Enviar string 2
+        controleSerialCom.HabilitarEscrita();
+        controleSerialCom.EnviarString(serialCom, "Ola mundo! 2");
+        controleSerialCom.HabilitarLeitura();
+        
+        //controleSerialCom.FecharCom();
+
     }
-    
-    
+
 }
