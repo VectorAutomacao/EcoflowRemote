@@ -60,8 +60,8 @@ public class ControlarSerialCom implements Runnable, SerialPortEventListener {
     }
 
     //**************************************************************************
-    // comunicação com a porta serial, após essa porta aberta podemos ou enviar ou ler a serial
-    /*
+    /* 
+    comunicação com a porta serial, após essa porta aberta podemos ou enviar ou ler a serial
     é muito importante que os dados de DATABITS, STOPBITS, PARITY e FLOWCONTROL sejam exatos 
     ao do seu equipamento serial, pois são parâmetros que vão estabelecer a velocidade e modo de 
     leitura e escrita serial do computador com o seu equipamento
@@ -84,6 +84,7 @@ public class ControlarSerialCom implements Runnable, SerialPortEventListener {
     }
 
     //**************************************************************************
+    /*Saida de de dados da porta serial*/
     public void EnviarString(SerialCom serialCom, String msg) {
 
         if (escrita == true) {
@@ -115,6 +116,7 @@ public class ControlarSerialCom implements Runnable, SerialPortEventListener {
     }
 
     //**************************************************************************
+    /*Habilitar leitura da porta*/
     public void LerDados() {
 
         if (escrita == false) {
@@ -145,6 +147,7 @@ public class ControlarSerialCom implements Runnable, SerialPortEventListener {
     }
 
     //**************************************************************************
+    /*Metodo absstrato manter e controlar a thread de leitura*/
     public void run() {
 
         try {
@@ -155,6 +158,7 @@ public class ControlarSerialCom implements Runnable, SerialPortEventListener {
     }
 
     //**************************************************************************
+    /*Metodo que monitora a porta serial entrada de dados*/
     public void serialEvent(SerialPortEvent ev) {
 
         StringBuffer bufferLeitura = new StringBuffer();
@@ -199,6 +203,7 @@ public class ControlarSerialCom implements Runnable, SerialPortEventListener {
     }
 
     //**************************************************************************
+    /*Fechar porta Serial COM*/
     public void FecharCom() {
 
         try {
