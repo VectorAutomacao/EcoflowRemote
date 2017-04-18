@@ -15,14 +15,14 @@ public class ControlarAplicativo {
         
         //verifica se existe porta serial COM
         if( listSerialCom.size() != 0)
-            serialCom = controleSerialCom.getIdPorta( listSerialCom.get(3) );
+            serialCom = controleSerialCom.getIdPorta( listSerialCom.get(1) );
         else
             System.out.println("Sem porta serial COM");
         
         //
         serialCom.setTimeout(0);
         serialCom.setBaudrate(9600);
-        serialCom.HabilitarLeitura();
+        controleSerialCom.HabilitarLeitura(serialCom);
         
         serialCom = controleSerialCom.AbrirPorta(serialCom);
         

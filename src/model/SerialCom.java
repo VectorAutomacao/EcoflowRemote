@@ -1,11 +1,11 @@
 package model;
 
 import gnu.io.CommPortIdentifier;
-import gnu.io.SerialPort;
 
 public class SerialCom {
     
     private String nome;
+    CommPortIdentifier id;
     private int baudrate;
     private int timeout;
     protected String peso;
@@ -111,16 +111,14 @@ public class SerialCom {
     
     //**************************************************************************
     
-    public void HabilitarEscrita(){
-        escrita = true;
-        leitura = false;
+    public CommPortIdentifier getId() {
+        return id;
     }
     
     //**************************************************************************
 
-    public void HabilitarLeitura(){
-        escrita = false;
-        leitura = true;
+    public void setId(CommPortIdentifier id) {
+        this.id = id;
     }
     
     //**************************************************************************

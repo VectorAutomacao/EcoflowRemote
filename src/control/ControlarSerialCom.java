@@ -7,7 +7,7 @@ import java.util.Enumeration;
 import model.SerialCom;
 
 public class ControlarSerialCom {
-    
+      
     //**************************************************************************
     
     /* Lista de Portas Serial */
@@ -23,18 +23,14 @@ public class ControlarSerialCom {
             
             if (portId.getPortType() == CommPortIdentifier.PORT_SERIAL) {
                 //Adicionar porta a lista de serial COM
-                SerialCom serialCom = new SerialCom(portId.getName() );
-                listSerialCom.add(serialCom);
+                SerialCom com = new SerialCom(portId.getName() );
+                listSerialCom.add(com);
                 
                 //Printa a porta se disponivel
                 System.out.println("Available port: " + portId.getName());
-                
             } 
- 
-        } 
-        
+        }
         return listSerialCom;
-        
     } 
     
     //**************************************************************************
@@ -43,18 +39,14 @@ public class ControlarSerialCom {
     identificar a porta selecionada
     obter o ID da porta para ser utilizado na identificação da mesma
     */
-    public CommPortIdentifier getIdPorta(SerialCom serialCom){
-        CommPortIdentifier id;
-        
+    public SerialCom getIdPorta(SerialCom serialCom){    
         try {
-             id = CommPortIdentifier.getPortIdentifier(serialCom.getNome() );
-             System.out.println("Sucesso em obter o ID da porta: " + serialCom.getNome() );
+            serialCom.setId(CommPortIdentifier.getPortIdentifier(serialCom.getNome() ) );
+            System.out.println("Sucesso em obter o ID da porta: " + serialCom.getNome() );
         } catch (Exception e) {
             System.out.println("Erro obtendo ID da porta: " + e);
         }
-        
-        return id;
-        
+        return serialCom;
     } 
     
     //**************************************************************************
@@ -80,39 +72,27 @@ public class ControlarSerialCom {
         }catch(Exception e){
             System.out.println("Erro abrindo comunicação: " + e);
         }
-        
         return serialCom;
     }
     
     //**************************************************************************
     
-    public void LerDados(SerialCom serialCom){
+    /* Habilita a porta serial COM para Escrita */
+    public SerialCom HabilitarEscrita(SerialCom serialCom){
+        serialCom.setEscrita(true);
+        serialCom.setLeitura(false);
         
-        if (serialCom.isEscrita() == false){
+        return serialCom;
+    }
+    
+    //**************************************************************************
 
-            try {
-                entrada = porta.getInputStream();
-            } catch (Exception e) {
-                System.out.println("Erro de stream: " + e);
-                System.exit(1);
-            }
-
-            try {
-                porta.addEventListener(this);
-            } catch (Exception e) {
-                System.out.println("Erro de listener: " + e);
-                System.exit(1);
-            }
-            porta.notifyOnDataAvailable(true);
-            
-            try {
-                threadLeitura = new Thread(this);
-                threadLeitura.start();
-               run();
-            } catch (Exception e) {
-                System.out.println("Erro de Thred: " + e);
-            }
-        }
+    /* Habilita a porta serial COM para Leitura */
+    public SerialCom HabilitarLeitura(SerialCom serialCom){
+        serialCom.setEscrita(false);
+        serialCom.setLeitura(true);
+        
+        return serialCom;
     }
     
     //**************************************************************************
