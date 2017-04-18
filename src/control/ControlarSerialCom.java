@@ -2,11 +2,17 @@ package control;
 
 import gnu.io.CommPortIdentifier;
 import gnu.io.SerialPort;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import model.SerialCom;
 
 public class ControlarSerialCom {
+    
+    SerialPort porta;
+    private OutputStream saida;
+    private InputStream entrada;
       
     //**************************************************************************
     
@@ -58,7 +64,6 @@ public class ControlarSerialCom {
     leitura e escrita serial do computador com o seu equipamento
     */
     public SerialCom AbrirPorta(SerialCom serialCom){
-        SerialPort porta;
 
         try {
             porta = (SerialPort)serialCom.getId().open("SerialComLeitura", serialCom.getTimeout());
@@ -73,6 +78,50 @@ public class ControlarSerialCom {
             System.out.println("Erro abrindo comunicação: " + e);
         }
         return serialCom;
+    }
+    
+    //**************************************************************************
+    
+    public void EnviarString(SerialCom serialCom, String msg){
+
+        if (serialCom.isEscrita() == true) {
+
+            try {
+                saida = porta.getOutputStream();
+                System.out.println("FLUXO OK!");
+                
+            } catch (Exception e) {
+                System.out.println("Erro.STATUS: " + e );
+            }
+
+            try {
+                System.out.println("Enviando um byte para " + serialCom.getNome() );
+                System.out.println("Enviando : " + msg );
+                saida.write(msg.getBytes());
+                Thread.sleep(100);
+                saida.flush();
+
+            } catch (Exception e) {
+                System.out.println("Houve um erro durante o envio. ");
+                System.out.println("STATUS: " + e );
+                System.exit(1);
+            }
+            
+        } else {
+            System.exit(1);
+        }
+    }
+    
+    //**************************************************************************
+    
+    public void FecharCom(){
+
+        try {
+            porta.close();
+        } catch (Exception e) {
+            System.out.println("Erro fechando porta: " + e);
+            System.exit(0);
+        }
     }
     
     //**************************************************************************

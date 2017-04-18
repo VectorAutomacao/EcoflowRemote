@@ -11,22 +11,26 @@ public class ControlarAplicativo {
     
     public ControlarAplicativo(){
         
+        //Obter lista de serial COM disponivel
         listSerialCom = controleSerialCom.getListaPorta();
         
         //verifica se existe porta serial COM
         if( listSerialCom.size() != 0)
+            //Obter ID da porta
             serialCom = controleSerialCom.getIdPorta( listSerialCom.get(1) );
         else
             System.out.println("Sem porta serial COM");
         
-        //
+        //Definindo propriedades da porta serial COM
         serialCom.setTimeout(0);
         serialCom.setBaudrate(9600);
-        controleSerialCom.HabilitarLeitura(serialCom);
         
+        //Controlar porta serial
+        controleSerialCom.HabilitarEscrita(serialCom);
         serialCom = controleSerialCom.AbrirPorta(serialCom);
+        controleSerialCom.EnviarString(serialCom, "Ola mundo!");
         
-        
+        controleSerialCom.FecharCom();
         
     }
     
