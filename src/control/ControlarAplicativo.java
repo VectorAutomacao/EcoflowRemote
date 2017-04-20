@@ -18,7 +18,7 @@ public class ControlarAplicativo {
         if (listSerialCom.size() != 0)
         {
             //Definindo propriedades da porta serial COM
-            serialCom = new SerialCom(listSerialCom.get(0).getNome(), 9600, 0);
+            serialCom = new SerialCom(listSerialCom.get(1).getNome(), 9600, 0);
             //Obter ID da porta
             serialCom = controleSerialCom.getIdPorta(serialCom);
         } else {
@@ -30,19 +30,19 @@ public class ControlarAplicativo {
         
         //Iniciar Leitura
         controleSerialCom.HabilitarLeitura();
-        controleSerialCom.LerDados();
+        controleSerialCom.leitura();
         
         //Enviar string 1
         controleSerialCom.HabilitarEscrita();
-        controleSerialCom.EnviarString(serialCom, "Ola mundo! 1");
+        controleSerialCom.escrita(serialCom, "Ola mundo! 1");
         controleSerialCom.HabilitarLeitura();
        
         //Enviar string 2
         controleSerialCom.HabilitarEscrita();
-        controleSerialCom.EnviarString(serialCom, "Ola mundo! 2");
+        controleSerialCom.escrita(serialCom, "Ola mundo! 2");
         controleSerialCom.HabilitarLeitura();
         
-        //controleSerialCom.FecharCom();
+        //controleSerialCom.FecharPorta();
 
     }
 

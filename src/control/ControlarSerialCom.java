@@ -85,7 +85,7 @@ public class ControlarSerialCom implements Runnable, SerialPortEventListener {
 
     //**************************************************************************
     /*Saida de de dados da porta serial*/
-    public void EnviarString(SerialCom serialCom, String msg) {
+    public void escrita(SerialCom serialCom, String msg) {
 
         if (escrita == true) {
 
@@ -117,7 +117,7 @@ public class ControlarSerialCom implements Runnable, SerialPortEventListener {
 
     //**************************************************************************
     /*Habilitar leitura da porta*/
-    public void LerDados() {
+    public void leitura() {
 
         if (escrita == false) {
 
@@ -204,7 +204,7 @@ public class ControlarSerialCom implements Runnable, SerialPortEventListener {
 
     //**************************************************************************
     /*Fechar porta Serial COM*/
-    public void FecharCom() {
+    public void FecharPorta() {
 
         try {
             porta.close();
