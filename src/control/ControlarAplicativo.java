@@ -15,10 +15,10 @@ public class ControlarAplicativo {
         listSerialCom = controleSerialCom.getListaPorta();
 
         //verifica se a lista de portas não esta vazia
-        if (listSerialCom.size() != 0)
+        if (!listSerialCom.isEmpty())
         {
             //Definindo propriedades da porta serial COM
-            serialCom = new SerialCom(listSerialCom.get(1).getNome(), 9600, 0);
+            serialCom = new SerialCom(listSerialCom.get(0).getNome(), 115200, 0);
             //Obter ID da porta
             serialCom = controleSerialCom.getIdPorta(serialCom);
         } else {
@@ -32,17 +32,32 @@ public class ControlarAplicativo {
         controleSerialCom.HabilitarLeitura();
         controleSerialCom.leitura();
         
-        //Enviar string 1
+        //Enviar string
         controleSerialCom.HabilitarEscrita();
-        controleSerialCom.escrita(serialCom, "Ola mundo! 1");
-        controleSerialCom.HabilitarLeitura();
-       
-        //Enviar string 2
-        controleSerialCom.HabilitarEscrita();
-        controleSerialCom.escrita(serialCom, "Ola mundo! 2");
+        controleSerialCom.escrita(serialCom, "get version\r");
         controleSerialCom.HabilitarLeitura();
         
-        //controleSerialCom.FecharPorta();
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException ex) {
+            System.out.println("Erro na Thread: " + ex);
+        }
+        
+        System.out.println(controleSerialCom.getMsgEntrada());
+        
+        controleSerialCom.HabilitarEscrita();
+        controleSerialCom.escrita(serialCom, "get baudrate\r");
+        controleSerialCom.HabilitarLeitura();
+        
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException ex) {
+            System.out.println("Erro na Thread: " + ex);
+        }
+        
+        System.out.println(controleSerialCom.getMsgEntrada());
+        
+        controleSerialCom.FecharPorta();
 
     }
 

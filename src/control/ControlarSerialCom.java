@@ -19,7 +19,28 @@ public class ControlarSerialCom implements Runnable, SerialPortEventListener {
     private Thread threadLeitura;
     private boolean leitura;
     private boolean escrita;
+    private String msgEntrada;
+    
+    //**************************************************************************
+    /*Get da menssagem de leitura da porta COM*/
+    public String getMsgEntrada() {
+        return msgEntrada;
+    }
+    
+    //**************************************************************************
+     /* Habilita a porta serial COM para Escrita */
+    public void HabilitarEscrita() {
+        escrita = true;
+        leitura = false;
+    }
 
+    //**************************************************************************
+    /* Habilita a porta serial COM para Leitura */
+    public void HabilitarLeitura() {
+        escrita = false;
+        leitura = true;
+    }
+    
     //**************************************************************************
     /* Lista de Portas Serial */
     public ArrayList<SerialCom> getListaPorta() {
@@ -73,9 +94,9 @@ public class ControlarSerialCom implements Runnable, SerialPortEventListener {
 
             //configurar parâmetros
             porta.setSerialPortParams(serialCom.getBaudrate(),
-                    porta.DATABITS_8,
-                    porta.STOPBITS_1,
-                    porta.PARITY_NONE);
+                    SerialPort.DATABITS_8,
+                    SerialPort.STOPBITS_1,
+                    SerialPort.PARITY_NONE);
             porta.setFlowControlMode(SerialPort.FLOWCONTROL_NONE);
         } catch (Exception e) {
             System.out.println("Erro abrindo comunicação: " + e);
@@ -85,9 +106,9 @@ public class ControlarSerialCom implements Runnable, SerialPortEventListener {
 
     //**************************************************************************
     /*Saida de de dados da porta serial*/
-    public void escrita(SerialCom serialCom, String msg) {
+    public void escrita(SerialCom serialCom, String msgSaida) {
 
-        if (escrita == true) {
+        if (escrita == true && leitura == false) {
 
             try {
                 saida = porta.getOutputStream();
@@ -99,8 +120,8 @@ public class ControlarSerialCom implements Runnable, SerialPortEventListener {
 
             try {
                 System.out.println("Enviando um byte para " + serialCom.getNome());
-                System.out.println("Enviando : " + msg);
-                saida.write(msg.getBytes());
+                System.out.println("Enviando : " + msgSaida);
+                saida.write(msgSaida.getBytes());
                 Thread.sleep(100);
                 saida.flush();
 
@@ -119,7 +140,7 @@ public class ControlarSerialCom implements Runnable, SerialPortEventListener {
     /*Habilitar leitura da porta*/
     public void leitura() {
 
-        if (escrita == false) {
+        if (leitura == true && escrita == false) {
 
             try {
                 entrada = porta.getInputStream();
@@ -186,18 +207,14 @@ public class ControlarSerialCom implements Runnable, SerialPortEventListener {
                         if (novoDado == -1) {
                             break;
                         }
-
-                        if ('\r' == (char) novoDado) {
-                            bufferLeitura.append('\n');
-                        } else {
-                            bufferLeitura.append((char) novoDado);
-                        }
+                        
+                        bufferLeitura.append((char) novoDado);
 
                     } catch (IOException ioe) {
                         System.out.println("Erro de leitura serial: " + ioe);
                     }
                 }
-                System.out.println(new String(bufferLeitura));
+                msgEntrada = new String(bufferLeitura);
                 break;
         }
     }
@@ -212,21 +229,6 @@ public class ControlarSerialCom implements Runnable, SerialPortEventListener {
             System.out.println("Erro fechando porta: " + e);
             System.exit(0);
         }
-    }
-
-    //**************************************************************************
-    /* Habilita a porta serial COM para Escrita */
-    public void HabilitarEscrita() {
-        escrita = true;
-        leitura = false;
-    }
-
-    //**************************************************************************
-
-    /* Habilita a porta serial COM para Leitura */
-    public void HabilitarLeitura() {
-        escrita = false;
-        leitura = true;
     }
 
     //**************************************************************************

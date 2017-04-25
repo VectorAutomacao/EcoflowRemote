@@ -8,7 +8,6 @@ public class SerialCom {
     CommPortIdentifier id;
     private int baudrate;
     private int timeout;
-    protected String peso;
 
     //**************************************************************************
     public SerialCom() {
@@ -55,17 +54,7 @@ public class SerialCom {
     public void setTimeout(int timeout) {
         this.timeout = timeout;
     }
-
-    //**************************************************************************
-    public String getPeso() {
-        return peso;
-    }
-
-    //**************************************************************************
-    public void setPeso(String peso) {
-        this.peso = peso;
-    }
-
+    
     //**************************************************************************
     public CommPortIdentifier getId() {
         return id;
