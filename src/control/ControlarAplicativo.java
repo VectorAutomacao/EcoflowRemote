@@ -29,17 +29,18 @@ public class ControlarAplicativo {
         //Obter ID da porta
         serialCom = controleSerialCom.getIdPorta(serialCom);
         
-    }
-    
-    //**************************************************************************
-    /*Metodo para enviar comando status*/
-    public String comando(String msgSaida){
         //Abrir porta para Leitura e escrita
         serialCom = controleSerialCom.AbrirPorta(serialCom);
         
         //Iniciar Leitura
         controleSerialCom.HabilitarLeitura();
         controleSerialCom.leitura();
+        
+    }
+    
+    //**************************************************************************
+    /*Metodo para enviar comando status*/
+    public String comando(String msgSaida){
         
         //Enviar string
         controleSerialCom.HabilitarEscrita();
@@ -52,7 +53,7 @@ public class ControlarAplicativo {
         } catch (InterruptedException ex) {
             System.out.println("Erro na Thread: " + ex);
         }
-        controleSerialCom.FecharPorta();
+        
         return controleSerialCom.getMsgEntrada();
         
     }
