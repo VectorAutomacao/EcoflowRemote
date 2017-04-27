@@ -45,7 +45,6 @@ public class ControlarAplicativo {
         //Enviar string
         controleSerialCom.HabilitarEscrita();
         controleSerialCom.escrita(serialCom, msgSaida + "\r");
-        System.out.println(msgSaida);
         controleSerialCom.HabilitarLeitura();
         
         //Tempo de espera para retonar uma resposta
@@ -57,6 +56,13 @@ public class ControlarAplicativo {
         
         return controleSerialCom.getMsgEntrada();
         
+    }
+    
+    //**************************************************************************
+    
+    //Fechar a porta COM e finaliza a Thread de leitura
+    public void fechar(){
+        controleSerialCom.FecharPorta();
     }
     
     //**************************************************************************

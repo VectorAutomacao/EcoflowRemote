@@ -215,16 +215,19 @@ public class ControlarSerialCom implements Runnable, SerialPortEventListener {
                     }
                 }
                 msgEntrada = new String(bufferLeitura);
+                System.out.println(msgEntrada);
                 break;
         }
     }
 
     //**************************************************************************
-    /*Fechar porta Serial COM*/
+    /*Fechar porta Serial COM e finalizar Thread*/
     public void FecharPorta() {
 
         try {
-            porta.close();
+            porta.close();//fechar a porta
+            threadLeitura.interrupt();// finaliza a Thread de leitura
+            
         } catch (Exception e) {
             System.out.println("Erro fechando porta: " + e);
             System.exit(0);
