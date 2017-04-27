@@ -82,9 +82,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         btnSalvar.setText("Aplicar");
         btnSalvar.setEnabled(false);
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
 
         btnPadrao.setText("Padrão");
         btnPadrao.setEnabled(false);
+        btnPadrao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPadraoActionPerformed(evt);
+            }
+        });
 
         txtSlaveadd.setEnabled(false);
 
@@ -200,6 +210,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         getValores();
     }//GEN-LAST:event_btnSelecionarActionPerformed
 
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        aplicar();
+    }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void btnPadraoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPadraoActionPerformed
+        padrao();
+    }//GEN-LAST:event_btnPadraoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -258,6 +276,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnSalvar.setEnabled(true);
         txtSlaveadd.setEnabled(true);
         
+        buscar();
+    }
+    
+    //**************************************************************************
+    
+    private void buscar(){
         //Busca valor atual configurado
         txtSlaveadd.setText(controleAplicativo.comando("get slaveadd") );
         txtInitialRegister.setText(controleAplicativo.comando("get initialregister") );
@@ -272,7 +296,37 @@ public class TelaPrincipal extends javax.swing.JFrame {
     
     //**************************************************************************
     
+    private void aplicar(){
+        System.out.println(controleAplicativo.comando("set slaveadd " + txtSlaveadd.getText() ) );
+        System.out.println(controleAplicativo.comando("set initialregister 33") );
+        System.out.println(controleAplicativo.comando("set initialinput 1") );
+        System.out.println(controleAplicativo.comando("set maxpulses 999") );
+        System.out.println(controleAplicativo.comando("set regsize 2") );
+        System.out.println(controleAplicativo.comando("set baudrate 9600") );
+        System.out.println(controleAplicativo.comando("set stopbits 1") );
+        System.out.println(controleAplicativo.comando("set parity 0") );
+        System.out.println(controleAplicativo.comando("set format bin") );
+        System.out.println(controleAplicativo.comando("save") );
+        
+        buscar();
+    }
     
+    //**************************************************************************
+    
+    private void padrao(){
+        System.out.println(controleAplicativo.comando("set slaveadd 1") );
+        System.out.println(controleAplicativo.comando("set initialregister 33") );
+        System.out.println(controleAplicativo.comando("set initialinput 1") );
+        System.out.println(controleAplicativo.comando("set maxpulses 999") );
+        System.out.println(controleAplicativo.comando("set regsize 2") );
+        System.out.println(controleAplicativo.comando("set baudrate 9600") );
+        System.out.println(controleAplicativo.comando("set stopbits 1") );
+        System.out.println(controleAplicativo.comando("set parity 0") );
+        System.out.println(controleAplicativo.comando("set format bin") );
+        System.out.println(controleAplicativo.comando("save") );
+        
+        buscar();
+    }
     
     //**************************************************************************
 
