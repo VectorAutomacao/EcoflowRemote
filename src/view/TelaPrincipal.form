@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="title" type="java.lang.String" value="ECOflow v0.1"/>
+    <Property name="name" type="java.lang.String" value="framePrincipal" noResource="true"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="lbSlaveadd" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbInitialinput" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbInitialregister" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbMaxpulses" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbRegsize" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbBaudrate" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbStopbits" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbParity" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbFormat" alignment="1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="txtInitialRegister" max="32767" attributes="0"/>
+                          <Component id="txtInitialInput" max="32767" attributes="0"/>
+                          <Component id="txtMaxpulses" max="32767" attributes="0"/>
+                          <Component id="txtRegSize" max="32767" attributes="0"/>
+                          <Component id="txtBaudrate" max="32767" attributes="0"/>
+                          <Component id="txtParity" max="32767" attributes="0"/>
+                          <Component id="txtSlaveadd" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtStopBits" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtFormat" alignment="0" pref="65" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="lbPorta" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="cbPortas" min="-2" pref="102" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="btnSelecionar" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnPadrao" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btnSalvar" alignment="0" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lbPorta" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cbPortas" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnSelecionar" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lbSlaveadd" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnPadrao" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtSlaveadd" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lbInitialregister" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtInitialRegister" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lbInitialinput" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtInitialInput" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lbMaxpulses" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtMaxpulses" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lbRegsize" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtRegSize" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lbBaudrate" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtBaudrate" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lbStopbits" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtStopBits" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lbParity" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtParity" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lbFormat" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtFormat" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="lbPorta">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Porta:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cbPortas">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="Item 1"/>
+            <StringItem index="1" value="Item 2"/>
+            <StringItem index="2" value="Item 3"/>
+            <StringItem index="3" value="Item 4"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JToggleButton" name="btnSelecionar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Selecionar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSelecionarActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbSlaveadd">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Slaveadd:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbInitialregister">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Initialregister:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbInitialinput">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Initialinput:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbMaxpulses">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Maxpulses:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbRegsize">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Regsize:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbBaudrate">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Baudrate:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbStopbits">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Stopbits:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbParity">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Parity:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbFormat">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Format:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnSalvar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Aplicar"/>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnPadrao">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Padr&#xe3;o"/>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtSlaveadd">
+      <Properties>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtInitialRegister">
+      <Properties>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtInitialInput">
+      <Properties>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtMaxpulses">
+      <Properties>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtRegSize">
+      <Properties>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtBaudrate">
+      <Properties>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtParity">
+      <Properties>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtFormat">
+      <Properties>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtStopBits">
+      <Properties>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+  </SubComponents>
+</Form>
