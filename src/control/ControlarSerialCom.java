@@ -32,6 +32,7 @@ public class ControlarSerialCom implements Runnable, SerialPortEventListener {
     public void HabilitarEscrita() {
         escrita = true;
         leitura = false;
+        msgEntrada = null;
     }
 
     //**************************************************************************
@@ -39,7 +40,6 @@ public class ControlarSerialCom implements Runnable, SerialPortEventListener {
     public void HabilitarLeitura() {
         escrita = false;
         leitura = true;
-        msgEntrada = null;
     }
     
     //**************************************************************************

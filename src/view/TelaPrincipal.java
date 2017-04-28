@@ -66,6 +66,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ECOflow v0.2");
         setName("framePrincipal"); // NOI18N
+        setResizable(false);
 
         lbPorta.setText("Porta:");
 
@@ -244,6 +245,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPadraoActionPerformed
 
     private void btnFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarActionPerformed
+        limpar();
         finalizar();
     }//GEN-LAST:event_btnFinalizarActionPerformed
 
