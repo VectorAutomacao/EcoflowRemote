@@ -27,7 +27,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jDesktopPane1 = new javax.swing.JDesktopPane();
         lbPorta = new javax.swing.JLabel();
         cbPortas = new javax.swing.JComboBox<>();
-        btnSelecionar = new javax.swing.JToggleButton();
         lbSlaveadd = new javax.swing.JLabel();
         lbInitialregister = new javax.swing.JLabel();
         lbInitialinput = new javax.swing.JLabel();
@@ -49,6 +48,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         txtFormat = new javax.swing.JTextField();
         txtStopBits = new javax.swing.JTextField();
         btnFinalizar = new javax.swing.JButton();
+        btnSelecionar = new javax.swing.JButton();
 
         jToggleButton1.setText("jToggleButton1");
 
@@ -70,13 +70,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         lbPorta.setText("Porta:");
 
         cbPortas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        btnSelecionar.setText("Selecionar");
-        btnSelecionar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSelecionarActionPerformed(evt);
-            }
-        });
 
         lbSlaveadd.setText("Slaveadd:");
 
@@ -138,6 +131,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        btnSelecionar.setText("Selecionar");
+        btnSelecionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSelecionarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -172,11 +172,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cbPortas, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnSelecionar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnPadrao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnFinalizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(btnPadrao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnFinalizar, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE))
+                    .addComponent(btnSelecionar))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -229,15 +230,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        getAccessibleContext().setAccessibleName("ECOflow v0.2.1");
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelecionarActionPerformed
-        getValores();
-    }//GEN-LAST:event_btnSelecionarActionPerformed
-
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-        aplicar();
+        alterar();
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnPadraoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPadraoActionPerformed
@@ -247,6 +246,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void btnFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarActionPerformed
         finalizar();
     }//GEN-LAST:event_btnFinalizarActionPerformed
+
+    private void btnSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelecionarActionPerformed
+        getValores();
+    }//GEN-LAST:event_btnSelecionarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -285,6 +288,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     
     //**************************************************************************
     
+    //Lista de portas de comunicação ativas
     private void listaSerialCom(){
         DefaultComboBoxModel comboModel = (DefaultComboBoxModel) cbPortas.getModel();
         comboModel.removeAllElements();
@@ -298,6 +302,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     
     //**************************************************************************
     
+    //retorna as configurações atuais
     private void getValores(){
         controleAplicativo.selecionarPorta((String) cbPortas.getSelectedItem());
         
@@ -329,7 +334,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     
     //**************************************************************************
     
-    private void aplicar(){
+    private void alterar(){
+        //Aplica a nova configuração
         System.out.println(controleAplicativo.comando("set slaveadd " + txtSlaveadd.getText() ) );
         System.out.println(controleAplicativo.comando("set initialregister 33") );
         System.out.println(controleAplicativo.comando("set initialinput 1") );
@@ -347,6 +353,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     //**************************************************************************
     
     private void padrao(){
+        //Aplica a configuração padrão
         System.out.println(controleAplicativo.comando("set slaveadd 1") );
         System.out.println(controleAplicativo.comando("set initialregister 33") );
         System.out.println(controleAplicativo.comando("set initialinput 1") );
@@ -377,12 +384,27 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
     
     //**************************************************************************
+    
+    private void limpar(){
+        //Limpar os dados dos campos
+        txtSlaveadd.setText(null);
+        txtInitialRegister.setText(null);
+        txtInitialInput.setText(null);
+        txtMaxpulses.setText(null);
+        txtRegSize.setText(null);
+        txtBaudrate.setText(null);
+        txtStopBits.setText(null);
+        txtParity.setText(null);
+        txtFormat.setText(null);
+    }
+    
+    //**************************************************************************
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnFinalizar;
     private javax.swing.JButton btnPadrao;
-    private javax.swing.JToggleButton btnSelecionar;
+    private javax.swing.JButton btnSelecionar;
     private javax.swing.JComboBox<String> cbPortas;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JToggleButton jToggleButton1;
