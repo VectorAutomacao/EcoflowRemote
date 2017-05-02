@@ -3,6 +3,7 @@ package view;
 import control.ControlarAplicativo;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import model.SerialCom;
 
 public class TelaPrincipal extends javax.swing.JFrame {
@@ -231,8 +232,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        getAccessibleContext().setAccessibleName("ECOflow v0.2.1");
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -306,17 +305,20 @@ public class TelaPrincipal extends javax.swing.JFrame {
     
     //retorna as configurações atuais
     private void getValores(){
-        controleAplicativo.selecionarPorta((String) cbPortas.getSelectedItem());
-        
-        //Ativar botões e campos
-        btnPadrao.setEnabled(true);
-        btnAlterar.setEnabled(true);
-        btnFinalizar.setEnabled(true);
-        btnSelecionar.setEnabled(false);
-        txtSlaveadd.setEnabled(true);
-        cbPortas.setEnabled(false);
-        
-        buscar();
+        if(controleAplicativo.selecionarPorta((String) cbPortas.getSelectedItem()).equals("ok\r") ){
+            //Ativar botões e campos
+            btnPadrao.setEnabled(true);
+            btnAlterar.setEnabled(true);
+            btnFinalizar.setEnabled(true);
+            btnSelecionar.setEnabled(false);
+            txtSlaveadd.setEnabled(true);
+            cbPortas.setEnabled(false);
+
+            buscar();
+        }else{
+            JOptionPane.showMessageDialog(null, "Porta Selecionada inválida!", "Alerta",JOptionPane.ERROR_MESSAGE);
+            controleAplicativo.fechar();
+        }
     }
     
     //**************************************************************************

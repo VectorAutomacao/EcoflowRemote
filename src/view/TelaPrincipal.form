@@ -29,9 +29,6 @@
     <Property name="name" type="java.lang.String" value="framePrincipal" noResource="true"/>
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>
-  <AccessibilityProperties>
-    <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="ECOflow v0.2.1"/>
-  </AccessibilityProperties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>

@@ -22,7 +22,7 @@ public class ControlarAplicativo {
     
     //**************************************************************************
     /*Selecionar e abrir comunicação com porta serial*/
-    public void selecionarPorta(String com){
+    public String selecionarPorta(String com){
         //Definindo propriedades da porta serial COM
         serialCom = new SerialCom(com, 115200, 0);
         
@@ -35,6 +35,20 @@ public class ControlarAplicativo {
         //Iniciar Leitura
         controleSerialCom.HabilitarLeitura();
         controleSerialCom.leitura();
+        
+        //Enviar string
+        controleSerialCom.HabilitarEscrita();
+        controleSerialCom.escrita(serialCom, "\r");
+        controleSerialCom.HabilitarLeitura();
+        
+        //Tempo de espera para retonar uma resposta
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException ex) {
+            System.out.println("Erro na Thread: " + ex);
+        }
+        
+        return controleSerialCom.getMsgEntrada();
         
     }
     

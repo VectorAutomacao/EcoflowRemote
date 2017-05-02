@@ -19,7 +19,7 @@ public class ControlarSerialCom implements Runnable, SerialPortEventListener {
     private Thread threadLeitura;
     private boolean leitura;
     private boolean escrita;
-    private String msgEntrada;
+    private String msgEntrada = "";
     
     //**************************************************************************
     /*Get da menssagem de leitura da porta COM*/
@@ -32,7 +32,7 @@ public class ControlarSerialCom implements Runnable, SerialPortEventListener {
     public void HabilitarEscrita() {
         escrita = true;
         leitura = false;
-        msgEntrada = null;
+        msgEntrada = "";
     }
 
     //**************************************************************************
@@ -216,7 +216,7 @@ public class ControlarSerialCom implements Runnable, SerialPortEventListener {
                     }
                 }
                 msgEntrada = new String(bufferLeitura);
-                System.out.println(msgEntrada);
+                System.out.println("Recebido: " + msgEntrada);
                 break;
         }
     }
