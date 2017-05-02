@@ -25,9 +25,8 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="title" type="java.lang.String" value="ECOflow v0.2"/>
+    <Property name="title" type="java.lang.String" value="ECOflow v0.3"/>
     <Property name="name" type="java.lang.String" value="framePrincipal" noResource="true"/>
-    <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -50,7 +49,12 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="lbPorta" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="cbPortas" max="32767" attributes="0"/>
+                  </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="lbSlaveadd" min="-2" max="-2" attributes="0"/>
@@ -64,34 +68,32 @@
                           <Component id="lbFormat" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="txtInitialRegister" max="32767" attributes="0"/>
-                          <Component id="txtInitialInput" max="32767" attributes="0"/>
                           <Component id="txtMaxpulses" max="32767" attributes="0"/>
                           <Component id="txtRegSize" max="32767" attributes="0"/>
                           <Component id="txtBaudrate" max="32767" attributes="0"/>
                           <Component id="txtParity" max="32767" attributes="0"/>
-                          <Component id="txtSlaveadd" alignment="0" max="32767" attributes="0"/>
                           <Component id="txtStopBits" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtFormat" alignment="0" pref="65" max="32767" attributes="0"/>
+                          <Component id="txtFormat" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtSlaveadd" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtInitialInput" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="btnSelecionar" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="btnAtualizar" max="32767" attributes="0"/>
+                          <Component id="btnPadrao" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnAlterar" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnFinalizar" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="lbPorta" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="cbPortas" min="-2" pref="102" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jSeparator1" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="btnPadrao" alignment="0" max="32767" attributes="0"/>
-                      <Component id="btnAlterar" alignment="0" max="32767" attributes="0"/>
-                      <Component id="btnFinalizar" pref="81" max="32767" attributes="0"/>
-                  </Group>
-                  <Component id="btnSelecionar" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -102,9 +104,15 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lbPorta" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cbPortas" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnAtualizar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnSelecionar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lbSlaveadd" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnPadrao" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -302,6 +310,16 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSelecionarActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnAtualizar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Atualizar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAtualizarActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JSeparator" name="jSeparator1">
     </Component>
   </SubComponents>
 </Form>

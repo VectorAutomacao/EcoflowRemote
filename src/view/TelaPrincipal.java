@@ -50,6 +50,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         txtStopBits = new javax.swing.JTextField();
         btnFinalizar = new javax.swing.JButton();
         btnSelecionar = new javax.swing.JButton();
+        btnAtualizar = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
 
         jToggleButton1.setText("jToggleButton1");
 
@@ -65,9 +67,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("ECOflow v0.2");
+        setTitle("ECOflow v0.3");
         setName("framePrincipal"); // NOI18N
-        setResizable(false);
 
         lbPorta.setText("Porta:");
 
@@ -140,14 +141,25 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        btnAtualizar.setText("Atualizar");
+        btnAtualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtualizarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lbPorta)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cbPortas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lbSlaveadd)
                             .addComponent(lbInitialinput)
@@ -159,27 +171,26 @@ public class TelaPrincipal extends javax.swing.JFrame {
                             .addComponent(lbParity)
                             .addComponent(lbFormat))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtInitialRegister)
-                            .addComponent(txtInitialInput)
                             .addComponent(txtMaxpulses)
                             .addComponent(txtRegSize)
                             .addComponent(txtBaudrate)
                             .addComponent(txtParity)
-                            .addComponent(txtSlaveadd)
                             .addComponent(txtStopBits)
-                            .addComponent(txtFormat, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(lbPorta)
+                            .addComponent(txtFormat)
+                            .addComponent(txtSlaveadd)
+                            .addComponent(txtInitialInput)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(btnSelecionar)
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbPortas, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnPadrao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnFinalizar, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE))
-                    .addComponent(btnSelecionar))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnAtualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnPadrao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnFinalizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jSeparator1))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -188,9 +199,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbPorta)
-                    .addComponent(cbPortas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbPortas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(4, 4, 4)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAtualizar)
                     .addComponent(btnSelecionar))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(2, 2, 2)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbSlaveadd)
                     .addComponent(btnPadrao)
@@ -252,6 +268,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         getValores();
     }//GEN-LAST:event_btnSelecionarActionPerformed
 
+    private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
+        listaSerialCom();
+    }//GEN-LAST:event_btnAtualizarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -311,6 +331,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             btnAlterar.setEnabled(true);
             btnFinalizar.setEnabled(true);
             btnSelecionar.setEnabled(false);
+            btnAtualizar.setEnabled(false);
             txtSlaveadd.setEnabled(true);
             cbPortas.setEnabled(false);
 
@@ -339,36 +360,80 @@ public class TelaPrincipal extends javax.swing.JFrame {
     //**************************************************************************
     
     private void alterar(){
+        boolean verifica = true;
         //Aplica a nova configuração
-        System.out.println(controleAplicativo.comando("set slaveadd " + txtSlaveadd.getText() ) );
-        System.out.println(controleAplicativo.comando("set initialregister 33") );
-        System.out.println(controleAplicativo.comando("set initialinput 1") );
-        System.out.println(controleAplicativo.comando("set maxpulses 999") );
-        System.out.println(controleAplicativo.comando("set regsize 2") );
-        System.out.println(controleAplicativo.comando("set baudrate 9600") );
-        System.out.println(controleAplicativo.comando("set stopbits 1") );
-        System.out.println(controleAplicativo.comando("set parity 0") );
-        System.out.println(controleAplicativo.comando("set format bin") );
-        System.out.println(controleAplicativo.comando("save") );
+        if(!controleAplicativo.comando("set slaveadd " + txtSlaveadd.getText() ).equals("ok\r") )
+            verifica = false;
+        if(!controleAplicativo.comando("set initialregister 33").equals("ok\r") )
+            verifica = false;
+        if(!controleAplicativo.comando("set initialinput 1").equals("ok\r") )
+            verifica = false;
+        if(!controleAplicativo.comando("set maxpulses 999").equals("ok\r") )
+            verifica = false;
+        if(!controleAplicativo.comando("set regsize 2").equals("ok\r") )
+            verifica = false;
+        if(!controleAplicativo.comando("set baudrate 9600").equals("ok\r") )
+            verifica = false;
+        if(!controleAplicativo.comando("set stopbits 1").equals("ok\r") )
+            verifica = false;
+        if(!controleAplicativo.comando("set parity 0").equals("ok\r") )
+            verifica = false;
+        if(!controleAplicativo.comando("set format bin").equals("ok\r") )
+            verifica = false;
         
+        //Verifica-se todos os comandos foram enviado com sucesso
+        if(verifica){
+            //verifica se as alterações foram salvas
+            if(!controleAplicativo.comando("save").equals("ok\r") ){
+                JOptionPane.showMessageDialog(null, "Ocorreu um problema em salvar as configurações! Tente novamente.",
+                    "Alerta",JOptionPane.ERROR_MESSAGE);
+                controleAplicativo.fechar();
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Ocorreu um problema em alterar as configurações! Tente novamente.",
+                    "Alerta",JOptionPane.ERROR_MESSAGE);
+            controleAplicativo.fechar();
+        }
         buscar();
     }
     
     //**************************************************************************
     
     private void padrao(){
+        boolean verifica = true;
         //Aplica a configuração padrão
-        System.out.println(controleAplicativo.comando("set slaveadd 1") );
-        System.out.println(controleAplicativo.comando("set initialregister 33") );
-        System.out.println(controleAplicativo.comando("set initialinput 1") );
-        System.out.println(controleAplicativo.comando("set maxpulses 999") );
-        System.out.println(controleAplicativo.comando("set regsize 2") );
-        System.out.println(controleAplicativo.comando("set baudrate 9600") );
-        System.out.println(controleAplicativo.comando("set stopbits 1") );
-        System.out.println(controleAplicativo.comando("set parity 0") );
-        System.out.println(controleAplicativo.comando("set format bin") );
-        System.out.println(controleAplicativo.comando("save") );
+        if(!controleAplicativo.comando("set slaveadd 1").equals("ok\r") )
+            verifica = false;
+        if(!controleAplicativo.comando("set initialregister 33").equals("ok\r") )
+            verifica = false;
+        if(!controleAplicativo.comando("set initialinput 1").equals("ok\r") )
+            verifica = false;
+        if(!controleAplicativo.comando("set maxpulses 999").equals("ok\r") )
+            verifica = false;
+        if(!controleAplicativo.comando("set regsize 2").equals("ok\r") )
+            verifica = false;
+        if(!controleAplicativo.comando("set baudrate 9600").equals("ok\r") )
+            verifica = false;
+        if(!controleAplicativo.comando("set stopbits 1").equals("ok\r") )
+            verifica = false;
+        if(!controleAplicativo.comando("set parity 0").equals("ok\r") )
+            verifica = false;
+        if(!controleAplicativo.comando("set format bin").equals("ok\r") )
+            verifica = false;
         
+        //Verifica-se todos os comandos foram enviado com sucesso
+        if(verifica){
+            //verifica se as alterações foram salvas
+            if(!controleAplicativo.comando("save").equals("ok\r") ){
+                JOptionPane.showMessageDialog(null, "Ocorreu um problema em salvar as configurações! Tente novamente.",
+                    "Alerta",JOptionPane.ERROR_MESSAGE);
+                controleAplicativo.fechar();
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Ocorreu um problema em alterar as configurações! Tente novamente.",
+                    "Alerta",JOptionPane.ERROR_MESSAGE);
+            controleAplicativo.fechar();
+        }
         buscar();
     }
     
@@ -381,6 +446,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnAlterar.setEnabled(false);
         btnFinalizar.setEnabled(false);
         btnSelecionar.setEnabled(true);
+        btnAtualizar.setEnabled(true);
         txtSlaveadd.setEnabled(false);
         cbPortas.setEnabled(true);
         
@@ -406,11 +472,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlterar;
+    private javax.swing.JButton btnAtualizar;
     private javax.swing.JButton btnFinalizar;
     private javax.swing.JButton btnPadrao;
     private javax.swing.JButton btnSelecionar;
     private javax.swing.JComboBox<String> cbPortas;
     private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JLabel lbBaudrate;
     private javax.swing.JLabel lbFormat;
