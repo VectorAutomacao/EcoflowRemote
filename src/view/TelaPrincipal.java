@@ -55,6 +55,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnSelecionar = new javax.swing.JButton();
         btnAtualizar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
+        btnLeitura = new javax.swing.JButton();
 
         jToggleButton1.setText("jToggleButton1");
 
@@ -153,6 +154,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        btnLeitura.setText("Leitura");
+        btnLeitura.setEnabled(false);
+        btnLeitura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLeituraActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -194,7 +203,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
                             .addComponent(btnAtualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnPadrao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnFinalizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(btnFinalizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnLeitura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jSeparator1))
                 .addContainerGap())
         );
@@ -225,11 +235,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbInitialinput)
                     .addComponent(txtInitialInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnFinalizar))
+                    .addComponent(btnLeitura))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbMaxpulses)
-                    .addComponent(txtMaxpulses, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtMaxpulses, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnFinalizar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbRegsize)
@@ -270,12 +281,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnFinalizarActionPerformed
 
     private void btnSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelecionarActionPerformed
-        getValores();
+        selecionar();
     }//GEN-LAST:event_btnSelecionarActionPerformed
 
     private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
         listaSerialCom();
     }//GEN-LAST:event_btnAtualizarActionPerformed
+
+    private void btnLeituraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLeituraActionPerformed
+        Leitura leitura = new Leitura(this, true);
+        leitura.setVisible(true);
+    }//GEN-LAST:event_btnLeituraActionPerformed
 
     /**
      * @param args the command line arguments
@@ -312,6 +328,44 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
     }
     
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAlterar;
+    private javax.swing.JButton btnAtualizar;
+    private javax.swing.JButton btnFinalizar;
+    private javax.swing.JButton btnLeitura;
+    private javax.swing.JButton btnPadrao;
+    private javax.swing.JButton btnSelecionar;
+    private javax.swing.JComboBox<String> cbPortas;
+    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JLabel lbBaudrate;
+    private javax.swing.JLabel lbFormat;
+    private javax.swing.JLabel lbInitialinput;
+    private javax.swing.JLabel lbInitialregister;
+    private javax.swing.JLabel lbMaxpulses;
+    private javax.swing.JLabel lbParity;
+    private javax.swing.JLabel lbPorta;
+    private javax.swing.JLabel lbRegsize;
+    private javax.swing.JLabel lbSlaveadd;
+    private javax.swing.JLabel lbStopbits;
+    private javax.swing.JTextField txtBaudrate;
+    private javax.swing.JTextField txtFormat;
+    private javax.swing.JTextField txtInitialInput;
+    private javax.swing.JTextField txtInitialRegister;
+    private javax.swing.JTextField txtMaxpulses;
+    private javax.swing.JTextField txtParity;
+    private javax.swing.JTextField txtRegSize;
+    private javax.swing.JTextField txtSlaveadd;
+    private javax.swing.JTextField txtStopBits;
+    // End of variables declaration//GEN-END:variables
+
+    //**************************************************************************
+    
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("ECOFlow.png")));
+    }
+    
     //**************************************************************************
     
     //Lista de portas de comunicação ativas
@@ -329,14 +383,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
     //**************************************************************************
     
     //retorna as configurações atuais
-    private void getValores(){
-        if(controleAplicativo.selecionarPorta((String) cbPortas.getSelectedItem()).equals("ok\r") ){
+    private void selecionar(){
+        if(!controleAplicativo.selecionarPorta((String) cbPortas.getSelectedItem()).equals("ok\r") ){
             //Ativar botões e campos
             btnPadrao.setEnabled(true);
             btnAlterar.setEnabled(true);
             btnFinalizar.setEnabled(true);
             btnSelecionar.setEnabled(false);
             btnAtualizar.setEnabled(false);
+            btnLeitura.setEnabled(true);
             txtSlaveadd.setEnabled(true);
             cbPortas.setEnabled(false);
 
@@ -452,6 +507,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnFinalizar.setEnabled(false);
         btnSelecionar.setEnabled(true);
         btnAtualizar.setEnabled(true);
+        btnLeitura.setEnabled(false);
         txtSlaveadd.setEnabled(false);
         cbPortas.setEnabled(true);
         
@@ -475,38 +531,4 @@ public class TelaPrincipal extends javax.swing.JFrame {
     
     //**************************************************************************
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAlterar;
-    private javax.swing.JButton btnAtualizar;
-    private javax.swing.JButton btnFinalizar;
-    private javax.swing.JButton btnPadrao;
-    private javax.swing.JButton btnSelecionar;
-    private javax.swing.JComboBox<String> cbPortas;
-    private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JLabel lbBaudrate;
-    private javax.swing.JLabel lbFormat;
-    private javax.swing.JLabel lbInitialinput;
-    private javax.swing.JLabel lbInitialregister;
-    private javax.swing.JLabel lbMaxpulses;
-    private javax.swing.JLabel lbParity;
-    private javax.swing.JLabel lbPorta;
-    private javax.swing.JLabel lbRegsize;
-    private javax.swing.JLabel lbSlaveadd;
-    private javax.swing.JLabel lbStopbits;
-    private javax.swing.JTextField txtBaudrate;
-    private javax.swing.JTextField txtFormat;
-    private javax.swing.JTextField txtInitialInput;
-    private javax.swing.JTextField txtInitialRegister;
-    private javax.swing.JTextField txtMaxpulses;
-    private javax.swing.JTextField txtParity;
-    private javax.swing.JTextField txtRegSize;
-    private javax.swing.JTextField txtSlaveadd;
-    private javax.swing.JTextField txtStopBits;
-    // End of variables declaration//GEN-END:variables
-
-    private void setIcon() {
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("ECOFlow.png")));
-    }
 }

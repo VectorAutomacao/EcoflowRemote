@@ -93,6 +93,7 @@
                           <Component id="btnPadrao" alignment="0" max="32767" attributes="0"/>
                           <Component id="btnAlterar" alignment="0" max="32767" attributes="0"/>
                           <Component id="btnFinalizar" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnLeitura" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Component id="jSeparator1" max="32767" attributes="0"/>
@@ -132,12 +133,13 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lbInitialinput" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtInitialInput" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnFinalizar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnLeitura" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lbMaxpulses" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtMaxpulses" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnFinalizar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -324,6 +326,15 @@
       </Events>
     </Component>
     <Component class="javax.swing.JSeparator" name="jSeparator1">
+    </Component>
+    <Component class="javax.swing.JButton" name="btnLeitura">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Leitura"/>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLeituraActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
