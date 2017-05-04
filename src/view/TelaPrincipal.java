@@ -1,8 +1,10 @@
 package view;
 
 import control.ControlarAplicativo;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import model.SerialCom;
 
@@ -13,6 +15,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     public TelaPrincipal() {
         initComponents();
         listaSerialCom();
+        setIcon();
     }
 
     /**
@@ -68,7 +71,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ECOflow v0.3");
+        setIconImages(null);
         setName("framePrincipal"); // NOI18N
+        setResizable(false);
 
         lbPorta.setText("Porta:");
 
@@ -500,4 +505,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField txtSlaveadd;
     private javax.swing.JTextField txtStopBits;
     // End of variables declaration//GEN-END:variables
+
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("ECOFlow.png")));
+    }
 }
