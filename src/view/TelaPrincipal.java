@@ -422,7 +422,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void alterar(){
         boolean verifica = true;
         //Aplica a nova configuração
-        if(!controleAplicativo.comando("set slaveadd " + txtSlaveadd.getText() ).equals("ok\r") )
+        if(!controleAplicativo.comando("set slaveadd " + txtSlaveadd.getText().trim() ).equals("ok\r") )
             verifica = false;
         if(!controleAplicativo.comando("set initialregister 33").equals("ok\r") )
             verifica = false;
