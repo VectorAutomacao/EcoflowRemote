@@ -4,7 +4,6 @@ import control.ControlarAplicativo;
 import java.awt.Toolkit;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import model.SerialCom;
 
@@ -289,7 +288,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAtualizarActionPerformed
 
     private void btnLeituraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLeituraActionPerformed
-        Leitura leitura = new Leitura(this, true);
+        Leitura leitura = new Leitura(this, true, controleAplicativo);
         leitura.setVisible(true);
     }//GEN-LAST:event_btnLeituraActionPerformed
 
@@ -384,7 +383,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     
     //retorna as configurações atuais
     private void selecionar(){
-        if(!controleAplicativo.selecionarPorta((String) cbPortas.getSelectedItem()).equals("ok\r") ){
+        //Verifica se porta COM selecionada e valida
+        if(controleAplicativo.selecionarPorta((String) cbPortas.getSelectedItem()).equals("ok\r") ){
             //Ativar botões e campos
             btnPadrao.setEnabled(true);
             btnAlterar.setEnabled(true);
