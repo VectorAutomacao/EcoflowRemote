@@ -78,6 +78,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         lbPorta.setText("Selecionar Porta:");
 
         cbPortas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbPortas.setNextFocusableComponent(btnSelecionar);
 
         lbSlaveadd.setText("Slaveadd:");
 
@@ -100,22 +101,35 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnAplicar.setMnemonic('A');
         btnAplicar.setText("Aplicar");
         btnAplicar.setEnabled(false);
+        btnAplicar.setNextFocusableComponent(btnLeitura);
         btnAplicar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAplicarActionPerformed(evt);
+            }
+        });
+        btnAplicar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnAplicarKeyPressed(evt);
             }
         });
 
         btnPadrao.setMnemonic('d');
         btnPadrao.setText("Padrão");
         btnPadrao.setEnabled(false);
+        btnPadrao.setNextFocusableComponent(btnAplicar);
         btnPadrao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPadraoActionPerformed(evt);
             }
         });
+        btnPadrao.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnPadraoKeyPressed(evt);
+            }
+        });
 
         txtSlaveadd.setEnabled(false);
+        txtSlaveadd.setNextFocusableComponent(btnPadrao);
 
         txtInitialRegister.setEnabled(false);
 
@@ -136,34 +150,58 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnFinalizar.setMnemonic('F');
         btnFinalizar.setText("Finalizar");
         btnFinalizar.setEnabled(false);
+        btnFinalizar.setNextFocusableComponent(cbPortas);
         btnFinalizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFinalizarActionPerformed(evt);
             }
         });
+        btnFinalizar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnFinalizarKeyPressed(evt);
+            }
+        });
 
         btnSelecionar.setMnemonic('S');
         btnSelecionar.setText("Selecionar");
+        btnSelecionar.setNextFocusableComponent(txtSlaveadd);
         btnSelecionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSelecionarActionPerformed(evt);
             }
         });
+        btnSelecionar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnSelecionarKeyPressed(evt);
+            }
+        });
 
         btnAtualizar.setMnemonic('t');
         btnAtualizar.setText("Atualizar");
+        btnAtualizar.setNextFocusableComponent(cbPortas);
         btnAtualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAtualizarActionPerformed(evt);
+            }
+        });
+        btnAtualizar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnAtualizarKeyPressed(evt);
             }
         });
 
         btnLeitura.setMnemonic('e');
         btnLeitura.setText("Leituras");
         btnLeitura.setEnabled(false);
+        btnLeitura.setNextFocusableComponent(btnFinalizar);
         btnLeitura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLeituraActionPerformed(evt);
+            }
+        });
+        btnLeitura.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnLeituraKeyPressed(evt);
             }
         });
 
@@ -227,7 +265,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(btnSelecionar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbSlaveadd)
                     .addComponent(btnPadrao)
@@ -270,7 +308,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        btnAtualizar.getAccessibleContext().setAccessibleDescription("Atualiza a lista de portas COM");
+        btnPadrao.getAccessibleContext().setAccessibleDescription("Aplica os valores padrões de configurações");
+        btnSelecionar.getAccessibleContext().setAccessibleDescription("");
+        btnAtualizar.getAccessibleContext().setAccessibleDescription("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -300,6 +340,40 @@ public class TelaPrincipal extends javax.swing.JFrame {
         Leitura leitura = new Leitura(this, true, controleAplicativo);
         leitura.setVisible(true);
     }//GEN-LAST:event_btnLeituraActionPerformed
+
+    private void btnSelecionarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnSelecionarKeyPressed
+        if (evt.getKeyCode() == evt.VK_ENTER)
+            selecionar();
+    }//GEN-LAST:event_btnSelecionarKeyPressed
+
+    private void btnAtualizarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnAtualizarKeyPressed
+        if (evt.getKeyCode() == evt.VK_ENTER)
+            listaSerialCom();
+    }//GEN-LAST:event_btnAtualizarKeyPressed
+
+    private void btnPadraoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPadraoKeyPressed
+        if (evt.getKeyCode() == evt.VK_ENTER)
+            padrao();
+    }//GEN-LAST:event_btnPadraoKeyPressed
+
+    private void btnAplicarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnAplicarKeyPressed
+        if (evt.getKeyCode() == evt.VK_ENTER)
+            alterar();
+    }//GEN-LAST:event_btnAplicarKeyPressed
+
+    private void btnLeituraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnLeituraKeyPressed
+        if (evt.getKeyCode() == evt.VK_ENTER){
+            Leitura leitura = new Leitura(this, true, controleAplicativo);
+            leitura.setVisible(true);
+        }
+    }//GEN-LAST:event_btnLeituraKeyPressed
+
+    private void btnFinalizarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnFinalizarKeyPressed
+        if (evt.getKeyCode() == evt.VK_ENTER){
+            limpar();
+            finalizar();
+        }
+    }//GEN-LAST:event_btnFinalizarKeyPressed
 
     /**
      * @param args the command line arguments

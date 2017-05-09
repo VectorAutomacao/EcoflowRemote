@@ -78,12 +78,26 @@ public class Leitura extends javax.swing.JDialog {
         setResizable(false);
 
         cbPorta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16" }));
+        cbPorta.setNextFocusableComponent(cbPorta);
 
         btnAplicar.setMnemonic('A');
         btnAplicar.setText("Aplicar");
+        btnAplicar.setNextFocusableComponent(cbPorta);
         btnAplicar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAplicarActionPerformed(evt);
+            }
+        });
+        btnAplicar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnAplicarKeyPressed(evt);
+            }
+        });
+
+        txtCount.setNextFocusableComponent(btnAplicar);
+        txtCount.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtCountKeyPressed(evt);
             }
         });
 
@@ -279,6 +293,16 @@ public class Leitura extends javax.swing.JDialog {
     private void btnAplicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAplicarActionPerformed
         alterar();
     }//GEN-LAST:event_btnAplicarActionPerformed
+
+    private void txtCountKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCountKeyPressed
+        if (evt.getKeyCode() == evt.VK_ENTER)
+            alterar();
+    }//GEN-LAST:event_txtCountKeyPressed
+
+    private void btnAplicarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnAplicarKeyPressed
+        if (evt.getKeyCode() == evt.VK_ENTER)
+            alterar();
+    }//GEN-LAST:event_btnAplicarKeyPressed
 
  
 
