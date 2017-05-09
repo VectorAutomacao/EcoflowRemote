@@ -25,7 +25,7 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="title" type="java.lang.String" value="ECOflow v0.4"/>
+    <Property name="title" type="java.lang.String" value="ECOflow v0.5"/>
     <Property name="iconImages" type="java.util.List" editor="org.netbeans.modules.form.ComponentChooserEditor">
       <ComponentRef name="null"/>
     </Property>
@@ -54,11 +54,6 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="lbPorta" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="cbPortas" max="32767" attributes="0"/>
-                  </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="lbSlaveadd" min="-2" max="-2" attributes="0"/>
@@ -82,21 +77,28 @@
                           <Component id="txtFormat" alignment="0" max="32767" attributes="0"/>
                           <Component id="txtSlaveadd" alignment="0" max="32767" attributes="0"/>
                           <Component id="txtInitialInput" alignment="0" max="32767" attributes="0"/>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="btnSelecionar" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          </Group>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnAtualizar" max="32767" attributes="0"/>
-                          <Component id="btnPadrao" alignment="0" max="32767" attributes="0"/>
-                          <Component id="btnAlterar" alignment="0" max="32767" attributes="0"/>
-                          <Component id="btnFinalizar" alignment="0" max="32767" attributes="0"/>
-                          <Component id="btnLeitura" alignment="0" max="32767" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="btnLeitura" alignment="1" pref="80" max="32767" attributes="0"/>
+                          <Component id="btnAplicar" alignment="1" max="32767" attributes="0"/>
+                          <Component id="btnPadrao" alignment="1" max="32767" attributes="0"/>
+                          <Component id="btnFinalizar" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Component id="jSeparator1" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="lbPorta" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="btnAtualizar" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="btnSelecionar" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="cbPortas" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
@@ -126,7 +128,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lbInitialregister" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnAlterar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnAplicar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtInitialRegister" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -174,7 +176,7 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="lbPorta">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Porta:"/>
+        <Property name="text" type="java.lang.String" value="Selecionar Porta:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="cbPortas">
@@ -237,17 +239,19 @@
         <Property name="text" type="java.lang.String" value="Format:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btnAlterar">
+    <Component class="javax.swing.JButton" name="btnAplicar">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Alterar"/>
+        <Property name="mnemonic" type="int" value="65"/>
+        <Property name="text" type="java.lang.String" value="Aplicar"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAlterarActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAplicarActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnPadrao">
       <Properties>
+        <Property name="mnemonic" type="int" value="100"/>
         <Property name="text" type="java.lang.String" value="Padr&#xe3;o"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
@@ -302,6 +306,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnFinalizar">
       <Properties>
+        <Property name="mnemonic" type="int" value="70"/>
         <Property name="text" type="java.lang.String" value="Finalizar"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
@@ -311,6 +316,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnSelecionar">
       <Properties>
+        <Property name="mnemonic" type="int" value="83"/>
         <Property name="text" type="java.lang.String" value="Selecionar"/>
       </Properties>
       <Events>
@@ -319,8 +325,12 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnAtualizar">
       <Properties>
+        <Property name="mnemonic" type="int" value="116"/>
         <Property name="text" type="java.lang.String" value="Atualizar"/>
       </Properties>
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Atualiza a lista de portas COM"/>
+      </AccessibilityProperties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAtualizarActionPerformed"/>
       </Events>
@@ -329,7 +339,8 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnLeitura">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Leitura"/>
+        <Property name="mnemonic" type="int" value="101"/>
+        <Property name="text" type="java.lang.String" value="Leituras"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>

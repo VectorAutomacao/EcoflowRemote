@@ -32,82 +32,79 @@
           <Group type="102" attributes="0">
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="lb08" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="txt08" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="lb07" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                              <Component id="txt07" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="lb01" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                              <Component id="txt01" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="lb04" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                              <Component id="txt04" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="lb03" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                              <Component id="txt03" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="lb02" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                              <Component id="txt02" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="lb05" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                              <Component id="txt05" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="lb06" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                              <Component id="txt06" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lb16" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lb15" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lb09" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lb12" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lb11" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lb10" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lb13" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lb14" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="lb01" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txt16" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txt15" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txt09" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txt12" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txt11" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txt10" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txt13" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txt14" alignment="0" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="lbcount1" min="-2" pref="65" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="cbPorta" min="-2" max="-2" attributes="0"/>
+                      <Component id="lb04" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="txtCount" min="-2" pref="80" max="-2" attributes="0"/>
+                      <Component id="lbcount4" min="-2" pref="65" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="lb03" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="btnAlterar" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbcount3" min="-2" pref="65" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="lb02" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="lbcount2" min="-2" pref="65" max="-2" attributes="0"/>
                   </Group>
               </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lb08" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lb07" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lb06" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lb05" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lbcount5" alignment="0" min="-2" pref="65" max="-2" attributes="0"/>
+                  <Component id="lbcount6" alignment="0" min="-2" pref="65" max="-2" attributes="0"/>
+                  <Component id="lbcount8" min="-2" pref="65" max="-2" attributes="0"/>
+                  <Component id="lbcount7" min="-2" pref="65" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lb09" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lb12" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lb11" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lb10" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lbcount9" alignment="0" min="-2" pref="65" max="-2" attributes="0"/>
+                  <Component id="lbcount10" alignment="0" min="-2" pref="65" max="-2" attributes="0"/>
+                  <Component id="lbcount12" alignment="0" min="-2" pref="65" max="-2" attributes="0"/>
+                  <Component id="lbcount11" alignment="0" min="-2" pref="65" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lb16" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lb15" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lb13" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lb14" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lbcount13" alignment="0" min="-2" pref="65" max="-2" attributes="0"/>
+                  <Component id="lbcount14" alignment="0" min="-2" pref="65" max="-2" attributes="0"/>
+                  <Component id="lbcount16" alignment="0" min="-2" pref="65" max="-2" attributes="0"/>
+                  <Component id="lbcount15" alignment="0" min="-2" pref="65" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="cbPorta" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="txtCount" min="-2" pref="80" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="btnAplicar" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -117,97 +114,100 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lb01" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt01" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="lb05" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbcount5" min="-2" pref="13" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lb02" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt02" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="lbcount6" max="32767" attributes="0"/>
+                          <Component id="lb06" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lb03" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt03" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="lb07" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbcount7" min="-2" pref="16" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lb04" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt04" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="lbcount8" max="32767" attributes="0"/>
+                          <Component id="lb08" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lb05" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt05" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lb06" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt06" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lb07" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt07" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lb08" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt08" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="lbcount9" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lbcount10" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lbcount11" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lbcount12" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="lb01" max="32767" attributes="0"/>
+                                      <Component id="lbcount1" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="lb02" max="32767" attributes="0"/>
+                                      <Component id="lbcount2" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="lb03" max="32767" attributes="0"/>
+                                      <Component id="lbcount3" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="lb04" max="32767" attributes="0"/>
+                                      <Component id="lbcount4" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="lb09" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="lb10" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="lb11" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="lb12" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="lb13" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="lb14" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="lb15" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="lb16" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="lbcount13" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lbcount14" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lbcount15" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lbcount16" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace type="separate" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txt09" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lb09" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnAplicar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbPorta" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtCount" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txt10" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lb10" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txt11" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lb11" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txt12" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lb12" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txt13" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lb13" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txt14" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lb14" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txt15" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lb15" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txt16" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lb16" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
                   </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnAlterar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="cbPorta" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtCount" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -240,180 +240,133 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JButton" name="btnAlterar">
+    <Component class="javax.swing.JButton" name="btnAplicar">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Alterar"/>
+        <Property name="mnemonic" type="int" value="65"/>
+        <Property name="text" type="java.lang.String" value="Aplicar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAlterarActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAplicarActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtCount">
     </Component>
     <Component class="javax.swing.JLabel" name="lb01">
       <Properties>
-        <Property name="text" type="java.lang.String" value="01"/>
+        <Property name="text" type="java.lang.String" value="Count 01:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lb02">
       <Properties>
-        <Property name="text" type="java.lang.String" value="02"/>
+        <Property name="text" type="java.lang.String" value="Count 02:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lb03">
       <Properties>
-        <Property name="text" type="java.lang.String" value="03"/>
+        <Property name="text" type="java.lang.String" value="Count 03:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lb04">
       <Properties>
-        <Property name="text" type="java.lang.String" value="04"/>
+        <Property name="text" type="java.lang.String" value="Count 04:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lb05">
       <Properties>
-        <Property name="text" type="java.lang.String" value="05"/>
+        <Property name="text" type="java.lang.String" value="Count 05:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lb06">
       <Properties>
-        <Property name="text" type="java.lang.String" value="06"/>
+        <Property name="text" type="java.lang.String" value="Count 06:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lb07">
       <Properties>
-        <Property name="text" type="java.lang.String" value="07"/>
+        <Property name="text" type="java.lang.String" value="Count 07:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lb08">
       <Properties>
-        <Property name="text" type="java.lang.String" value="08"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txt01">
-      <Properties>
-        <Property name="editable" type="boolean" value="false"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txt02">
-      <Properties>
-        <Property name="editable" type="boolean" value="false"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txt03">
-      <Properties>
-        <Property name="editable" type="boolean" value="false"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txt04">
-      <Properties>
-        <Property name="editable" type="boolean" value="false"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txt05">
-      <Properties>
-        <Property name="editable" type="boolean" value="false"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txt06">
-      <Properties>
-        <Property name="editable" type="boolean" value="false"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txt07">
-      <Properties>
-        <Property name="editable" type="boolean" value="false"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txt08">
-      <Properties>
-        <Property name="editable" type="boolean" value="false"/>
+        <Property name="text" type="java.lang.String" value="Count 08:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lb14">
       <Properties>
-        <Property name="text" type="java.lang.String" value="14"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txt15">
-      <Properties>
-        <Property name="editable" type="boolean" value="false"/>
+        <Property name="text" type="java.lang.String" value="Count 14:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lb15">
       <Properties>
-        <Property name="text" type="java.lang.String" value="15"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txt16">
-      <Properties>
-        <Property name="editable" type="boolean" value="false"/>
+        <Property name="text" type="java.lang.String" value="Count 15:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lb16">
       <Properties>
-        <Property name="text" type="java.lang.String" value="16"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txt09">
-      <Properties>
-        <Property name="editable" type="boolean" value="false"/>
+        <Property name="text" type="java.lang.String" value="Count 16:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lb09">
       <Properties>
-        <Property name="text" type="java.lang.String" value="09"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txt10">
-      <Properties>
-        <Property name="editable" type="boolean" value="false"/>
+        <Property name="text" type="java.lang.String" value="Count 09:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lb10">
       <Properties>
-        <Property name="text" type="java.lang.String" value="10"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txt11">
-      <Properties>
-        <Property name="editable" type="boolean" value="false"/>
+        <Property name="text" type="java.lang.String" value="Count 10:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lb11">
       <Properties>
-        <Property name="text" type="java.lang.String" value="11"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txt12">
-      <Properties>
-        <Property name="editable" type="boolean" value="false"/>
+        <Property name="text" type="java.lang.String" value="Count 11:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lb12">
       <Properties>
-        <Property name="text" type="java.lang.String" value="12"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txt13">
-      <Properties>
-        <Property name="editable" type="boolean" value="false"/>
+        <Property name="text" type="java.lang.String" value="Count 12:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lb13">
       <Properties>
-        <Property name="text" type="java.lang.String" value="13"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txt14">
-      <Properties>
-        <Property name="editable" type="boolean" value="false"/>
+        <Property name="text" type="java.lang.String" value="Count 13:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Porta"/>
+        <Property name="text" type="java.lang.String" value="Selecionar Porta:"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbcount1">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbcount2">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbcount3">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbcount4">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbcount5">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbcount6">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbcount7">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbcount8">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbcount9">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbcount10">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbcount11">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbcount12">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbcount13">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbcount14">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbcount15">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbcount16">
     </Component>
   </SubComponents>
 </Form>
