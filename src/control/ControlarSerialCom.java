@@ -213,6 +213,7 @@ public class ControlarSerialCom implements Runnable, SerialPortEventListener {
 
                     } catch (IOException ioe) {
                         System.out.println("Erro de leitura serial: " + ioe);
+                        System.exit(0);//Caso ocorra um erro de leitura finaliza o programa
                     }
                 }
                 msgEntrada = new String(bufferLeitura);
