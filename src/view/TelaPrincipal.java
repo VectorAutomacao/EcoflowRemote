@@ -481,7 +481,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     //retorna as configurações atuais
     private void selecionar(){
         //Verifica se porta COM selecionada e valida
-        if(!controleAplicativo.selecionarPorta((String) cbPortas.getSelectedItem()).equals("ok\r") ){
+        if(controleAplicativo.selecionarPorta((String) cbPortas.getSelectedItem()).equals("ok\r") ){
             //Ativar botões e campos
             btnPadrao.setEnabled(true);
             btnAplicar.setEnabled(true);
