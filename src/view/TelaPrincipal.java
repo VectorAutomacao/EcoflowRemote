@@ -70,7 +70,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("ECOflow v0.5");
+        setTitle("ECOflow v0.5.1");
         setIconImages(null);
         setName("framePrincipal"); // NOI18N
         setResizable(false);
@@ -130,6 +130,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         txtSlaveadd.setEnabled(false);
         txtSlaveadd.setNextFocusableComponent(btnPadrao);
+        txtSlaveadd.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtSlaveaddKeyTyped(evt);
+            }
+        });
 
         txtInitialRegister.setEnabled(false);
 
@@ -376,6 +381,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnFinalizarKeyPressed
 
+    private void txtSlaveaddKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSlaveaddKeyTyped
+        String caracteres="0987654321";//String com caractes validos
+        //Verifica se caracter e valido
+        if(!caracteres.contains(evt.getKeyChar()+"")){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtSlaveaddKeyTyped
+
     /**
      * @param args the command line arguments
      */
@@ -468,7 +481,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     //retorna as configurações atuais
     private void selecionar(){
         //Verifica se porta COM selecionada e valida
-        if(controleAplicativo.selecionarPorta((String) cbPortas.getSelectedItem()).equals("ok\r") ){
+        if(!controleAplicativo.selecionarPorta((String) cbPortas.getSelectedItem()).equals("ok\r") ){
             //Ativar botões e campos
             btnPadrao.setEnabled(true);
             btnAplicar.setEnabled(true);
@@ -502,43 +515,52 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
     
     //**************************************************************************
-    
+   
+    //Aplica a nova configuração
     private void alterar(){
-        boolean verifica = true;
-        //Aplica a nova configuração
-        if(!controleAplicativo.comando("set slaveadd " + txtSlaveadd.getText().trim() ).equals("ok\r") )
-            verifica = false;
-        if(!controleAplicativo.comando("set initialregister 33").equals("ok\r") )
-            verifica = false;
-        if(!controleAplicativo.comando("set initialinput 1").equals("ok\r") )
-            verifica = false;
-        if(!controleAplicativo.comando("set maxpulses 999").equals("ok\r") )
-            verifica = false;
-        if(!controleAplicativo.comando("set regsize 2").equals("ok\r") )
-            verifica = false;
-        if(!controleAplicativo.comando("set baudrate 9600").equals("ok\r") )
-            verifica = false;
-        if(!controleAplicativo.comando("set stopbits 1").equals("ok\r") )
-            verifica = false;
-        if(!controleAplicativo.comando("set parity 0").equals("ok\r") )
-            verifica = false;
-        if(!controleAplicativo.comando("set format bin").equals("ok\r") )
-            verifica = false;
         
-        //Verifica-se todos os comandos foram enviado com sucesso
-        if(verifica){
-            //verifica se as alterações foram salvas
-            if(!controleAplicativo.comando("save").equals("ok\r") ){
-                JOptionPane.showMessageDialog(null, "Ocorreu um problema em salvar as configurações! Tente novamente.",
-                    "Alerta",JOptionPane.ERROR_MESSAGE);
+        boolean verifica = true;
+        
+        //Verifica se textField não e nulo
+        if(!txtSlaveadd.getText().trim().equals("") ){
+            if(!controleAplicativo.comando("set slaveadd " + txtSlaveadd.getText().trim() ).equals("ok\r") )
+                verifica = false;
+            if(!controleAplicativo.comando("set initialregister 33").equals("ok\r") )
+                verifica = false;
+            if(!controleAplicativo.comando("set initialinput 1").equals("ok\r") )
+                verifica = false;
+            if(!controleAplicativo.comando("set maxpulses 999").equals("ok\r") )
+                verifica = false;
+            if(!controleAplicativo.comando("set regsize 2").equals("ok\r") )
+                verifica = false;
+            if(!controleAplicativo.comando("set baudrate 9600").equals("ok\r") )
+                verifica = false;
+            if(!controleAplicativo.comando("set stopbits 1").equals("ok\r") )
+                verifica = false;
+            if(!controleAplicativo.comando("set parity 0").equals("ok\r") )
+                verifica = false;
+            if(!controleAplicativo.comando("set format bin").equals("ok\r") )
+                verifica = false;
+            
+            //Verifica-se todos os comandos foram enviado com sucesso
+            if(verifica){
+                //verifica se as alterações foram salvas
+                if(!controleAplicativo.comando("save").equals("ok\r") ){
+                    JOptionPane.showMessageDialog(null, "Ocorreu um problema em salvar as configurações! Tente novamente.",
+                        "Alerta",JOptionPane.ERROR_MESSAGE);
+                    controleAplicativo.fechar();
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "Ocorreu um problema em alterar as configurações! Tente novamente.",
+                        "Alerta",JOptionPane.ERROR_MESSAGE);
                 controleAplicativo.fechar();
             }
+            buscar();
         }else{
-            JOptionPane.showMessageDialog(null, "Ocorreu um problema em alterar as configurações! Tente novamente.",
-                    "Alerta",JOptionPane.ERROR_MESSAGE);
-            controleAplicativo.fechar();
+            
+            JOptionPane.showMessageDialog(null, "Preencha campo corretamente.", "Alerta", JOptionPane.ERROR_MESSAGE);
         }
-        buscar();
+        
     }
     
     //**************************************************************************

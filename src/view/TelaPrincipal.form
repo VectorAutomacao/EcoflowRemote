@@ -25,7 +25,7 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="title" type="java.lang.String" value="ECOflow v0.5"/>
+    <Property name="title" type="java.lang.String" value="ECOflow v0.5.1"/>
     <Property name="iconImages" type="java.util.List" editor="org.netbeans.modules.form.ComponentChooserEditor">
       <ComponentRef name="null"/>
     </Property>
@@ -282,6 +282,9 @@
           <ComponentRef name="btnPadrao"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtSlaveaddKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtInitialRegister">
       <Properties>

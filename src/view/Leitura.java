@@ -100,6 +100,9 @@ public class Leitura extends javax.swing.JDialog {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtCountKeyPressed(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCountKeyTyped(evt);
+            }
         });
 
         lb01.setText("Count 01:");
@@ -303,13 +306,21 @@ public class Leitura extends javax.swing.JDialog {
 
     private void txtCountKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCountKeyPressed
         if (evt.getKeyCode() == evt.VK_ENTER)
-            alterar();
+            btnAplicarKeyPressed(evt);
     }//GEN-LAST:event_txtCountKeyPressed
 
     private void btnAplicarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnAplicarKeyPressed
         if (evt.getKeyCode() == evt.VK_ENTER)
             alterar();
     }//GEN-LAST:event_btnAplicarKeyPressed
+
+    private void txtCountKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCountKeyTyped
+         String caracteres="0987654321";//String com caractes validos
+        //Verifica se caracter e valido
+        if(!caracteres.contains(evt.getKeyChar()+"")){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtCountKeyTyped
 
  
 
@@ -380,24 +391,31 @@ public class Leitura extends javax.swing.JDialog {
     
     private void alterar(){
         boolean verifica = true;
-        //alterar valores do count
-        if(!controleAplicativo.comando("set count "+(String) cbPorta.getSelectedItem()+" "+ txtCount.getText().trim()).equals("ok\r") )
-            verifica = false;
         
-        //Verifica-se todos os comandos foram enviado com sucesso
-        if(verifica){
-            //verifica se as alterações foram salvas
-            if(!controleAplicativo.comando("save").equals("ok\r") ){
-                JOptionPane.showMessageDialog(null, "Ocorreu um problema em salvar as configurações! Tente novamente.",
-                    "Alerta",JOptionPane.ERROR_MESSAGE);
+        //Verifica se textField não e nulo
+        if(!txtCount.getText().trim().equals("") ){
+            //alterar valores do count
+            if(!controleAplicativo.comando("set count "+(String) cbPorta.getSelectedItem()+" "+ txtCount.getText().trim()).equals("ok\r") )
+                verifica = false;
+
+            //Verifica-se todos os comandos foram enviado com sucesso
+            if(verifica){
+                //verifica se as alterações foram salvas
+                if(!controleAplicativo.comando("save").equals("ok\r") ){
+                    JOptionPane.showMessageDialog(null, "Ocorreu um problema em salvar as configurações! Tente novamente.",
+                        "Alerta",JOptionPane.ERROR_MESSAGE);
+                    controleAplicativo.fechar();
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "Ocorreu um problema em alterar as configurações! Tente novamente.",
+                        "Alerta",JOptionPane.ERROR_MESSAGE);
                 controleAplicativo.fechar();
             }
+            buscar();
+            
         }else{
-            JOptionPane.showMessageDialog(null, "Ocorreu um problema em alterar as configurações! Tente novamente.",
-                    "Alerta",JOptionPane.ERROR_MESSAGE);
-            controleAplicativo.fechar();
+            JOptionPane.showMessageDialog(null, "Preencha campo corretamente.", "Alerta", JOptionPane.ERROR_MESSAGE);
         }
-        buscar();
     }
     
     //**************************************************************************
