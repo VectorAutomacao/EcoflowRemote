@@ -70,7 +70,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("ECOflow v0.5.1");
+        setTitle("ECOflow v0.5.2");
         setIconImages(null);
         setName("framePrincipal"); // NOI18N
         setResizable(false);
