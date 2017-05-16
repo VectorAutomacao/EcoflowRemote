@@ -55,6 +55,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnAtualizar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         btnLeitura = new javax.swing.JButton();
+        lbStatus = new javax.swing.JLabel();
 
         jToggleButton1.setText("jToggleButton1");
 
@@ -102,6 +103,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnAplicar.setText("Aplicar");
         btnAplicar.setEnabled(false);
         btnAplicar.setNextFocusableComponent(btnLeitura);
+        btnAplicar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnAplicarMousePressed(evt);
+            }
+        });
         btnAplicar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAplicarActionPerformed(evt);
@@ -111,12 +117,20 @@ public class TelaPrincipal extends javax.swing.JFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 btnAplicarKeyPressed(evt);
             }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                btnAplicarKeyReleased(evt);
+            }
         });
 
         btnPadrao.setMnemonic('d');
         btnPadrao.setText("Padrão");
         btnPadrao.setEnabled(false);
         btnPadrao.setNextFocusableComponent(btnAplicar);
+        btnPadrao.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnPadraoMousePressed(evt);
+            }
+        });
         btnPadrao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPadraoActionPerformed(evt);
@@ -125,6 +139,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnPadrao.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 btnPadraoKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                btnPadraoKeyReleased(evt);
             }
         });
 
@@ -170,6 +187,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnSelecionar.setMnemonic('S');
         btnSelecionar.setText("Selecionar");
         btnSelecionar.setNextFocusableComponent(txtSlaveadd);
+        btnSelecionar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnSelecionarMousePressed(evt);
+            }
+        });
         btnSelecionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSelecionarActionPerformed(evt);
@@ -178,6 +200,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnSelecionar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 btnSelecionarKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                btnSelecionarKeyReleased(evt);
             }
         });
 
@@ -199,6 +224,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnLeitura.setText("Leituras");
         btnLeitura.setEnabled(false);
         btnLeitura.setNextFocusableComponent(btnFinalizar);
+        btnLeitura.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnLeituraMousePressed(evt);
+            }
+        });
         btnLeitura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLeituraActionPerformed(evt);
@@ -207,6 +237,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnLeitura.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 btnLeituraKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                btnLeituraKeyReleased(evt);
             }
         });
 
@@ -217,6 +250,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbPorta)
+                            .addComponent(btnFinalizar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(btnAtualizar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnSelecionar))
+                            .addComponent(cbPortas, 0, 164, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lbSlaveadd)
@@ -243,19 +288,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnLeitura, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
                             .addComponent(btnAplicar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnPadrao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(jSeparator1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbPorta)
-                            .addComponent(btnFinalizar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(btnAtualizar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnSelecionar))
-                            .addComponent(cbPortas, 0, 164, Short.MAX_VALUE))))
+                            .addComponent(btnPadrao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lbStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -288,9 +322,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(txtInitialInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnLeitura))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbMaxpulses)
-                    .addComponent(txtMaxpulses, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbStatus, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lbMaxpulses)
+                        .addComponent(txtMaxpulses, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbRegsize)
@@ -311,7 +347,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbFormat)
                     .addComponent(txtFormat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         btnPadrao.getAccessibleContext().setAccessibleDescription("Aplica os valores padrões de configurações");
@@ -343,13 +379,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAtualizarActionPerformed
 
     private void btnLeituraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLeituraActionPerformed
+        lbStatus.setText("");
         Leitura leitura = new Leitura(this, true, controleAplicativo);
         leitura.setVisible(true);
     }//GEN-LAST:event_btnLeituraActionPerformed
 
     private void btnSelecionarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnSelecionarKeyPressed
-        if (evt.getKeyCode() == evt.VK_ENTER)
-            selecionar();
+      lbStatus.setText("Aguarde...");            
     }//GEN-LAST:event_btnSelecionarKeyPressed
 
     private void btnAtualizarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnAtualizarKeyPressed
@@ -358,20 +394,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAtualizarKeyPressed
 
     private void btnPadraoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPadraoKeyPressed
-        if (evt.getKeyCode() == evt.VK_ENTER)
-            padrao();
+        lbStatus.setText("Aguarde...");
     }//GEN-LAST:event_btnPadraoKeyPressed
 
     private void btnAplicarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnAplicarKeyPressed
-        if (evt.getKeyCode() == evt.VK_ENTER)
-            alterar();
+        lbStatus.setText("Aguarde...");
     }//GEN-LAST:event_btnAplicarKeyPressed
 
     private void btnLeituraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnLeituraKeyPressed
-        if (evt.getKeyCode() == evt.VK_ENTER){
-            Leitura leitura = new Leitura(this, true, controleAplicativo);
-            leitura.setVisible(true);
-        }
+        lbStatus.setText("Aguarde...");
     }//GEN-LAST:event_btnLeituraKeyPressed
 
     private void btnFinalizarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnFinalizarKeyPressed
@@ -388,6 +419,45 @@ public class TelaPrincipal extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_txtSlaveaddKeyTyped
+
+    private void btnSelecionarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSelecionarMousePressed
+        lbStatus.setText("Aguarde...");
+    }//GEN-LAST:event_btnSelecionarMousePressed
+
+    private void btnSelecionarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnSelecionarKeyReleased
+        if (evt.getKeyCode() == evt.VK_ENTER)
+            selecionar();
+    }//GEN-LAST:event_btnSelecionarKeyReleased
+
+    private void btnPadraoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPadraoMousePressed
+        lbStatus.setText("Aguarde...");
+    }//GEN-LAST:event_btnPadraoMousePressed
+
+    private void btnAplicarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnAplicarKeyReleased
+        if (evt.getKeyCode() == evt.VK_ENTER)
+            alterar();
+    }//GEN-LAST:event_btnAplicarKeyReleased
+
+    private void btnAplicarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAplicarMousePressed
+        lbStatus.setText("Aguarde...");
+    }//GEN-LAST:event_btnAplicarMousePressed
+
+    private void btnPadraoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPadraoKeyReleased
+        if (evt.getKeyCode() == evt.VK_ENTER)
+            padrao();
+    }//GEN-LAST:event_btnPadraoKeyReleased
+
+    private void btnLeituraKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnLeituraKeyReleased
+        if (evt.getKeyCode() == evt.VK_ENTER){
+            Leitura leitura = new Leitura(this, true, controleAplicativo);
+            leitura.setVisible(true);
+            lbStatus.setText("");
+        }
+    }//GEN-LAST:event_btnLeituraKeyReleased
+
+    private void btnLeituraMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLeituraMousePressed
+        lbStatus.setText("Aguarde...");
+    }//GEN-LAST:event_btnLeituraMousePressed
 
     /**
      * @param args the command line arguments
@@ -444,6 +514,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lbPorta;
     private javax.swing.JLabel lbRegsize;
     private javax.swing.JLabel lbSlaveadd;
+    private javax.swing.JLabel lbStatus;
     private javax.swing.JLabel lbStopbits;
     private javax.swing.JTextField txtBaudrate;
     private javax.swing.JTextField txtFormat;
@@ -501,7 +572,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     
     //**************************************************************************
     
-    private void buscar(){
+    private void buscar(){        
         //Busca valor atual configurado
         txtSlaveadd.setText(controleAplicativo.comando("get slaveadd") );
         txtInitialRegister.setText(controleAplicativo.comando("get initialregister") );
@@ -512,6 +583,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         txtStopBits.setText(controleAplicativo.comando("get stopbits") );
         txtParity.setText(controleAplicativo.comando("get parity") );
         txtFormat.setText(controleAplicativo.comando("get format") );
+        
+        lbStatus.setText("");
     }
     
     //**************************************************************************
@@ -541,7 +614,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 verifica = false;
             if(!controleAplicativo.comando("set format bin").equals("ok\r") )
                 verifica = false;
-            
             //Verifica-se todos os comandos foram enviado com sucesso
             if(verifica){
                 //verifica se as alterações foram salvas
@@ -567,6 +639,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     
     private void padrao(){
         boolean verifica = true;
+        
         //Aplica a configuração padrão
         if(!controleAplicativo.comando("set slaveadd 1").equals("ok\r") )
             verifica = false;
