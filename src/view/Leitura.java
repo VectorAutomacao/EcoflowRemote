@@ -8,10 +8,7 @@ package view;
 import control.ControlarAplicativo;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author v1n1c
- */
+
 public class Leitura extends javax.swing.JDialog {
     
     private ControlarAplicativo controleAplicativo;
@@ -347,10 +344,12 @@ public class Leitura extends javax.swing.JDialog {
 
     private void btnAplicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAplicarActionPerformed
         alterar();
+        //Menssagem de status do programa
         lbStatus.setText("Concluído");
     }//GEN-LAST:event_btnAplicarActionPerformed
 
     private void btnAplicarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnAplicarKeyPressed
+        //Menssagem de status do programa
         lbStatus.setText("Aguarde...");
     }//GEN-LAST:event_btnAplicarKeyPressed
 
@@ -363,31 +362,37 @@ public class Leitura extends javax.swing.JDialog {
     }//GEN-LAST:event_txtCountKeyTyped
 
     private void btnAplicarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAplicarMousePressed
+        //Menssagem de status do programa
         lbStatus.setText("Aguarde...");
     }//GEN-LAST:event_btnAplicarMousePressed
 
     private void btnAplicarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnAplicarKeyReleased
         if (evt.getKeyCode() == evt.VK_ENTER){
             alterar();
+            //Menssagem de status do programa
             lbStatus.setText("Concluído");
         }
     }//GEN-LAST:event_btnAplicarKeyReleased
 
     private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
         buscar();
+        //Menssagem de status do programa
         lbStatus.setText("Concluído");
     }//GEN-LAST:event_btnAtualizarActionPerformed
 
     private void btnAtualizarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnAtualizarKeyPressed
+        //Menssagem de status do programa
         lbStatus.setText("Aguarde...");
     }//GEN-LAST:event_btnAtualizarKeyPressed
 
     private void btnAtualizarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnAtualizarKeyReleased
         buscar();
+        //Menssagem de status do programa
         lbStatus.setText("Concluído");
     }//GEN-LAST:event_btnAtualizarKeyReleased
 
     private void btnAtualizarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAtualizarMousePressed
+        //Menssagem de status do programa
         lbStatus.setText("Aguarde...");
     }//GEN-LAST:event_btnAtualizarMousePressed
 
@@ -440,7 +445,7 @@ public class Leitura extends javax.swing.JDialog {
     //**************************************************************************
     
     private void buscar(){
-        //Buscar os valores atuais da remota
+        //Busca as leituras da remota
         lbcount1.setText( controleAplicativo.comando("get count 1"));
         lbcount2.setText( controleAplicativo.comando("get count 2"));
         lbcount3.setText( controleAplicativo.comando("get count 3"));
@@ -462,7 +467,7 @@ public class Leitura extends javax.swing.JDialog {
     //**************************************************************************
     
     private void buscar(int i){
-        //Buscar os valores atuais da remota
+        //Busca as leituras da remota da porta selecionada
         if(i == 1)
             lbcount1.setText( controleAplicativo.comando("get count 1"));
         if(i == 2)
@@ -511,18 +516,18 @@ public class Leitura extends javax.swing.JDialog {
             //Verifica-se todos os comandos foram enviado com sucesso
             if(verifica){
                 //verifica se as alterações foram salvas
-                if(!controleAplicativo.comando("save").equals("ok\r") ){
+                if(!controleAplicativo.comando("save").equals("ok\r") ){ //Caso ocorra um problema ao salvar as configurações
                     JOptionPane.showMessageDialog(null, "Ocorreu um problema em salvar as configurações! Tente novamente.",
                         "Alerta",JOptionPane.ERROR_MESSAGE);
                     controleAplicativo.fechar();
+                }else{// Caso as configurações salvas com sucesso
+                    buscar( Integer.parseInt((String) cbPorta.getSelectedItem()) );
                 }
             }else{
                 JOptionPane.showMessageDialog(null, "Ocorreu um problema em alterar as configurações! Tente novamente.",
                         "Alerta",JOptionPane.ERROR_MESSAGE);
                 controleAplicativo.fechar();
             }
-            buscar( Integer.parseInt((String) cbPorta.getSelectedItem()) );
-            
         }else{
             JOptionPane.showMessageDialog(null, "Preencha campo corretamente.", "Alerta", JOptionPane.ERROR_MESSAGE);
         }

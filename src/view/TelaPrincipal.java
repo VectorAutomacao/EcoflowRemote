@@ -382,13 +382,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAtualizarActionPerformed
 
     private void btnLeituraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLeituraActionPerformed
-        lbStatus.setText("Concluído");
+        //Abrir painel de leitura da remota
         Leitura leitura = new Leitura(this, true, controleAplicativo);
         leitura.setVisible(true);
+        //Menssagem de status do programa
+        lbStatus.setText("Concluído");
     }//GEN-LAST:event_btnLeituraActionPerformed
 
     private void btnSelecionarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnSelecionarKeyPressed
-      lbStatus.setText("Aguarde...");            
+        //Menssagem de status do programa
+        lbStatus.setText("Aguarde...");            
     }//GEN-LAST:event_btnSelecionarKeyPressed
 
     private void btnAtualizarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnAtualizarKeyPressed
@@ -397,14 +400,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAtualizarKeyPressed
 
     private void btnPadraoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPadraoKeyPressed
+        //Menssagem de status do programa
         lbStatus.setText("Aguarde...");
     }//GEN-LAST:event_btnPadraoKeyPressed
 
     private void btnAplicarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnAplicarKeyPressed
+        //Menssagem de status do programa
         lbStatus.setText("Aguarde...");
     }//GEN-LAST:event_btnAplicarKeyPressed
 
     private void btnLeituraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnLeituraKeyPressed
+        //Menssagem de status do programa
         lbStatus.setText("Aguarde...");
     }//GEN-LAST:event_btnLeituraKeyPressed
 
@@ -424,6 +430,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_txtSlaveaddKeyTyped
 
     private void btnSelecionarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSelecionarMousePressed
+        //Menssagem de status do programa
         lbStatus.setText("Aguarde...");
     }//GEN-LAST:event_btnSelecionarMousePressed
 
@@ -433,6 +440,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSelecionarKeyReleased
 
     private void btnPadraoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPadraoMousePressed
+        //Menssagem de status do programa
         lbStatus.setText("Aguarde...");
     }//GEN-LAST:event_btnPadraoMousePressed
 
@@ -442,6 +450,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAplicarKeyReleased
 
     private void btnAplicarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAplicarMousePressed
+        //Menssagem de status do programa
         lbStatus.setText("Aguarde...");
     }//GEN-LAST:event_btnAplicarMousePressed
 
@@ -452,13 +461,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void btnLeituraKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnLeituraKeyReleased
         if (evt.getKeyCode() == evt.VK_ENTER){
+            //Painel de leitura da remota
             Leitura leitura = new Leitura(this, true, controleAplicativo);
-            leitura.setVisible(true);
+            //Menssagem de status do programa
             lbStatus.setText("Concluído");
+            leitura.setVisible(true);
         }
     }//GEN-LAST:event_btnLeituraKeyReleased
 
     private void btnLeituraMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLeituraMousePressed
+        //Menssagem de status do programa
         lbStatus.setText("Aguarde...");
     }//GEN-LAST:event_btnLeituraMousePressed
 
@@ -532,6 +544,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     //**************************************************************************
     
+    //Icone da janela
     private void setIcon() {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("ECOFlow.png")));
     }
@@ -552,10 +565,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
     
     //**************************************************************************
     
-    //retorna as configurações atuais
+    //Seleciona porta COM
     private void selecionar(){
         //Verifica se porta COM selecionada e valida
         if(controleAplicativo.selecionarPorta((String) cbPortas.getSelectedItem()).equals("ok\r") ){
+            //Busca as configurações da remota
+            buscar();
+            
             //Ativar botões e campos
             btnPadrao.setEnabled(true);
             btnAplicar.setEnabled(true);
@@ -565,8 +581,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
             btnLeitura.setEnabled(true);
             txtSlaveadd.setEnabled(true);
             cbPortas.setEnabled(false);
-
-            buscar();
         }else{
             JOptionPane.showMessageDialog(null, "Porta Selecionada inválida!", "Alerta",JOptionPane.ERROR_MESSAGE);
             controleAplicativo.fechar();
@@ -587,6 +601,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         txtParity.setText(controleAplicativo.comando("get parity") );
         txtFormat.setText(controleAplicativo.comando("get format") );
         
+        //Menssagem de status do programa
         lbStatus.setText("Concluído");
     }
     
@@ -620,19 +635,20 @@ public class TelaPrincipal extends javax.swing.JFrame {
             //Verifica-se todos os comandos foram enviado com sucesso
             if(verifica){
                 //verifica se as alterações foram salvas
-                if(!controleAplicativo.comando("save").equals("ok\r") ){
+                if(!controleAplicativo.comando("save").equals("ok\r") ){//Caso tenha um problema em salvar as configurações
                     JOptionPane.showMessageDialog(null, "Ocorreu um problema em salvar as configurações! Tente novamente.",
                         "Alerta",JOptionPane.ERROR_MESSAGE);
                     controleAplicativo.fechar();
+                }else{//Caso comando foi salvo na remota com sucesso
+                    //Busca as configurações da remota
+                    buscar();
                 }
             }else{
                 JOptionPane.showMessageDialog(null, "Ocorreu um problema em alterar as configurações! Tente novamente.",
                         "Alerta",JOptionPane.ERROR_MESSAGE);
                 controleAplicativo.fechar();
             }
-            buscar();
         }else{
-            
             JOptionPane.showMessageDialog(null, "Preencha campo corretamente.", "Alerta", JOptionPane.ERROR_MESSAGE);
         }
         
@@ -666,17 +682,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
         //Verifica-se todos os comandos foram enviado com sucesso
         if(verifica){
             //verifica se as alterações foram salvas
-            if(!controleAplicativo.comando("save").equals("ok\r") ){
+            if(!controleAplicativo.comando("save").equals("ok\r") ){//Caso tenha um problema em salvar as configurações
                 JOptionPane.showMessageDialog(null, "Ocorreu um problema em salvar as configurações! Tente novamente.",
                     "Alerta",JOptionPane.ERROR_MESSAGE);
                 controleAplicativo.fechar();
+            }else{ //Caso comando foi salvo na remota com sucesso
+                //Busca as configurações da remota
+                buscar();
             }
         }else{
             JOptionPane.showMessageDialog(null, "Ocorreu um problema em alterar as configurações! Tente novamente.",
                     "Alerta",JOptionPane.ERROR_MESSAGE);
             controleAplicativo.fechar();
         }
-        buscar();
     }
     
     //**************************************************************************
@@ -693,6 +711,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         txtSlaveadd.setEnabled(false);
         cbPortas.setEnabled(true);
         
+        //Fecha porta COM e finaliza thread de leitura
         controleAplicativo.fechar();
     }
     
