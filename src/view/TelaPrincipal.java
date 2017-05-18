@@ -53,9 +53,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnFinalizar = new javax.swing.JButton();
         btnSelecionar = new javax.swing.JButton();
         btnAtualizar = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JSeparator();
         btnLeitura = new javax.swing.JButton();
         lbStatus = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
 
         jToggleButton1.setText("jToggleButton1");
 
@@ -243,14 +243,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        lbStatus.setBackground(new java.awt.Color(255, 255, 255));
+        lbStatus.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        lbStatus.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 2, 2, 1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator1)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbPorta)
@@ -261,7 +264,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                                 .addComponent(btnAtualizar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnSelecionar))
-                            .addComponent(cbPortas, 0, 164, Short.MAX_VALUE)))
+                            .addComponent(cbPortas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lbSlaveadd)
@@ -288,14 +291,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnLeitura, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
                             .addComponent(btnAplicar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnPadrao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lbStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(btnPadrao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(lbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
+            .addComponent(jSeparator2)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbPorta)
                     .addComponent(cbPortas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -304,9 +308,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(btnAtualizar)
                     .addComponent(btnSelecionar)
                     .addComponent(btnFinalizar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbSlaveadd)
                     .addComponent(btnPadrao)
@@ -322,11 +324,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(txtInitialInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnLeitura))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbStatus, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lbMaxpulses)
-                        .addComponent(txtMaxpulses, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbMaxpulses)
+                    .addComponent(txtMaxpulses, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbRegsize)
@@ -347,7 +347,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbFormat)
                     .addComponent(txtFormat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(lbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         btnPadrao.getAccessibleContext().setAccessibleDescription("Aplica os valores padrões de configurações");
@@ -379,7 +382,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAtualizarActionPerformed
 
     private void btnLeituraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLeituraActionPerformed
-        lbStatus.setText("");
+        lbStatus.setText("Concluído");
         Leitura leitura = new Leitura(this, true, controleAplicativo);
         leitura.setVisible(true);
     }//GEN-LAST:event_btnLeituraActionPerformed
@@ -451,7 +454,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         if (evt.getKeyCode() == evt.VK_ENTER){
             Leitura leitura = new Leitura(this, true, controleAplicativo);
             leitura.setVisible(true);
-            lbStatus.setText("");
+            lbStatus.setText("Concluído");
         }
     }//GEN-LAST:event_btnLeituraKeyReleased
 
@@ -503,7 +506,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnSelecionar;
     private javax.swing.JComboBox<String> cbPortas;
     private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JLabel lbBaudrate;
     private javax.swing.JLabel lbFormat;
@@ -584,7 +587,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         txtParity.setText(controleAplicativo.comando("get parity") );
         txtFormat.setText(controleAplicativo.comando("get format") );
         
-        lbStatus.setText("");
+        lbStatus.setText("Concluído");
     }
     
     //**************************************************************************
@@ -706,6 +709,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         txtStopBits.setText(null);
         txtParity.setText(null);
         txtFormat.setText(null);
+        lbStatus.setText("");
     }
     
     //**************************************************************************

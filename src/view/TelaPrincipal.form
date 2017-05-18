@@ -51,10 +51,9 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jSeparator1" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="lbPorta" min="-2" max="-2" attributes="0"/>
@@ -67,7 +66,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="btnSelecionar" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="cbPortas" pref="164" max="32767" attributes="0"/>
+                          <Component id="cbPortas" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -99,18 +98,19 @@
                           <Component id="btnLeitura" alignment="1" pref="80" max="32767" attributes="0"/>
                           <Component id="btnAplicar" alignment="1" max="32767" attributes="0"/>
                           <Component id="btnPadrao" alignment="1" max="32767" attributes="0"/>
-                          <Component id="lbStatus" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
+                  <Component id="lbStatus" alignment="0" min="-2" pref="258" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
+          <Component id="jSeparator2" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lbPorta" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cbPortas" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -121,60 +121,58 @@
                   <Component id="btnSelecionar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnFinalizar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lbSlaveadd" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnPadrao" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtSlaveadd" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lbInitialregister" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnAplicar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtInitialRegister" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lbInitialinput" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtInitialInput" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnLeitura" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lbStatus" alignment="1" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lbMaxpulses" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtMaxpulses" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lbMaxpulses" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtMaxpulses" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lbRegsize" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtRegSize" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lbBaudrate" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtBaudrate" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lbStopbits" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtStopBits" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lbParity" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtParity" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lbFormat" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtFormat" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Component id="jSeparator2" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+              <Component id="lbStatus" min="-2" pref="18" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -382,8 +380,6 @@
         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="btnAtualizarKeyPressed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JSeparator" name="jSeparator1">
-    </Component>
     <Component class="javax.swing.JButton" name="btnLeitura">
       <Properties>
         <Property name="mnemonic" type="int" value="101"/>
@@ -401,6 +397,19 @@
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lbStatus">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+        <Property name="verticalAlignment" type="int" value="1"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+            <EmptyBorder bottom="2" left="2" right="1" top="1"/>
+          </Border>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JSeparator" name="jSeparator2">
     </Component>
   </SubComponents>
 </Form>
