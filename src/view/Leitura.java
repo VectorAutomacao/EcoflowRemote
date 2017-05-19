@@ -19,6 +19,7 @@ public class Leitura extends javax.swing.JDialog {
     public Leitura(java.awt.Frame parent, boolean modal, ControlarAplicativo controleAplicativo) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(null);
         status();
         this.controleAplicativo = controleAplicativo;
         atualizar();
@@ -141,7 +142,6 @@ public class Leitura extends javax.swing.JDialog {
 
         btnAtualizar.setMnemonic('t');
         btnAtualizar.setText("Atualizar");
-        btnAtualizar.setToolTipText("");
         btnAtualizar.setNextFocusableComponent(cbPorta);
         btnAtualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

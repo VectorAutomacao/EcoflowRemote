@@ -14,6 +14,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     public TelaPrincipal() {
         initComponents();
+        this.setLocationRelativeTo(null);
         status();
         listaSerialCom();
         setIcon();
@@ -73,7 +74,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("ECOflow v0.6.0");
+        setTitle("ECOflow v0.6.2");
         setIconImages(null);
         setName("framePrincipal"); // NOI18N
         setResizable(false);
@@ -722,7 +723,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         cbPortas.setEnabled(true);
 
         //Fecha porta COM e finaliza thread de leitura
-        controleAplicativo.fechar();
+        flagStatus = 0;
     }
 
     //**************************************************************************
