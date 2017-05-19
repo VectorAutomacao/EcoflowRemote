@@ -535,23 +535,31 @@ public class TelaPrincipal extends javax.swing.JFrame {
     //**************************************************************************
     //Seleciona porta COM
     private void selecionar() {
-        //Verifica se porta COM selecionada e valida
-        if (controleAplicativo.selecionarPorta((String) cbPortas.getSelectedItem()).equals("ok\r")) {
-            //Busca as configurações da remota
-            buscar();
+        //Verifica se existe uma porta selecionada
+        if(cbPortas.getSelectedItem() != (null)){
+            //Verifica se porta COM selecionada e valida
+            if (controleAplicativo.selecionarPorta((String) cbPortas.getSelectedItem()).equals("ok\r")) {
+                //Busca as configurações da remota
+                buscar();
 
-            //Ativar botões e campos
-            btnPadrao.setEnabled(true);
-            btnAplicar.setEnabled(true);
-            btnFinalizar.setEnabled(true);
-            btnSelecionar.setEnabled(false);
-            btnAtualizar.setEnabled(false);
-            btnLeitura.setEnabled(true);
-            txtSlaveadd.setEnabled(true);
-            cbPortas.setEnabled(false);
-        } else {
-            JOptionPane.showMessageDialog(null, "Porta Selecionada inválida!", "Alerta", JOptionPane.ERROR_MESSAGE);
-            controleAplicativo.fechar();
+                //Ativar botões e campos
+                btnPadrao.setEnabled(true);
+                btnAplicar.setEnabled(true);
+                btnFinalizar.setEnabled(true);
+                btnSelecionar.setEnabled(false);
+                btnAtualizar.setEnabled(false);
+                btnLeitura.setEnabled(true);
+                txtSlaveadd.setEnabled(true);
+                cbPortas.setEnabled(false);
+            } else {
+                JOptionPane.showMessageDialog(null, "Porta Selecionada inválida!", "Alerta", JOptionPane.ERROR_MESSAGE);
+                controleAplicativo.fechar();
+            }
+        }else{
+            lbStatus.setText("");
+            JOptionPane.showMessageDialog(null, "Nenhuma porta COM selecionada. Se necessário click em atualizar.",
+                        "Alerta", JOptionPane.ERROR_MESSAGE);
+                controleAplicativo.fechar();
         }
     }
 
