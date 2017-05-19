@@ -8,9 +8,17 @@ import javax.swing.JOptionPane;
 import model.SerialCom;
 
 public class TelaPrincipal extends javax.swing.JFrame {
-
-    private ControlarAplicativo controleAplicativo = new ControlarAplicativo();
+    
+    //Controle
+    private static ControlarAplicativo controleAplicativo = new ControlarAplicativo();
+    //Variavel de controle da notificação de status do programa
     private static int flagStatus = 0;
+    //Threads
+    Thread tSeleciona;
+    Thread tAlterar;
+    Thread tPadrao;
+    Thread tStatus;
+    
 
     public TelaPrincipal() {
         initComponents();
@@ -74,14 +82,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("ECOflow v0.6.2");
+        setTitle("ECOflow v0.6.3");
         setIconImages(null);
         setName("framePrincipal"); // NOI18N
         setResizable(false);
 
         lbPorta.setText("Selecionar Porta:");
 
-        cbPortas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cbPortas.setNextFocusableComponent(btnSelecionar);
 
         lbSlaveadd.setText("Slaveadd:");
@@ -106,20 +113,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnAplicar.setText("Aplicar");
         btnAplicar.setEnabled(false);
         btnAplicar.setNextFocusableComponent(btnLeitura);
-        btnAplicar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnAplicarMousePressed(evt);
-            }
-        });
         btnAplicar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAplicarActionPerformed(evt);
             }
         });
         btnAplicar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                btnAplicarKeyPressed(evt);
-            }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 btnAplicarKeyReleased(evt);
             }
@@ -129,20 +128,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnPadrao.setText("Padrão");
         btnPadrao.setEnabled(false);
         btnPadrao.setNextFocusableComponent(btnAplicar);
-        btnPadrao.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnPadraoMousePressed(evt);
-            }
-        });
         btnPadrao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPadraoActionPerformed(evt);
             }
         });
         btnPadrao.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                btnPadraoKeyPressed(evt);
-            }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 btnPadraoKeyReleased(evt);
             }
@@ -190,20 +181,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnSelecionar.setMnemonic('S');
         btnSelecionar.setText("Selecionar");
         btnSelecionar.setNextFocusableComponent(txtSlaveadd);
-        btnSelecionar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnSelecionarMousePressed(evt);
-            }
-        });
         btnSelecionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSelecionarActionPerformed(evt);
             }
         });
         btnSelecionar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                btnSelecionarKeyPressed(evt);
-            }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 btnSelecionarKeyReleased(evt);
             }
@@ -227,20 +210,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnLeitura.setText("Leituras");
         btnLeitura.setEnabled(false);
         btnLeitura.setNextFocusableComponent(btnFinalizar);
-        btnLeitura.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnLeituraMousePressed(evt);
-            }
-        });
         btnLeitura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLeituraActionPerformed(evt);
             }
         });
         btnLeitura.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                btnLeituraKeyPressed(evt);
-            }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 btnLeituraKeyReleased(evt);
             }
@@ -386,35 +361,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void btnLeituraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLeituraActionPerformed
         leitura();
-        //Menssagem de status do programa
-        flagStatus = 2;
     }//GEN-LAST:event_btnLeituraActionPerformed
-
-    private void btnSelecionarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnSelecionarKeyPressed
-        //Menssagem de status do programa
-        flagStatus = 1;
-    }//GEN-LAST:event_btnSelecionarKeyPressed
 
     private void btnAtualizarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnAtualizarKeyPressed
         if (evt.getKeyCode() == evt.VK_ENTER) {
             listaSerialCom();
         }
     }//GEN-LAST:event_btnAtualizarKeyPressed
-
-    private void btnPadraoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPadraoKeyPressed
-        //Menssagem de status do programa
-        flagStatus = 1;
-    }//GEN-LAST:event_btnPadraoKeyPressed
-
-    private void btnAplicarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnAplicarKeyPressed
-        //Menssagem de status do programa
-        flagStatus = 1;
-    }//GEN-LAST:event_btnAplicarKeyPressed
-
-    private void btnLeituraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnLeituraKeyPressed
-        //Menssagem de status do programa
-        flagStatus = 1;
-    }//GEN-LAST:event_btnLeituraKeyPressed
 
     private void btnFinalizarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnFinalizarKeyPressed
         if (evt.getKeyCode() == evt.VK_ENTER) {
@@ -431,32 +384,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtSlaveaddKeyTyped
 
-    private void btnSelecionarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSelecionarMousePressed
-        //Menssagem de status do programa
-        flagStatus = 1;
-    }//GEN-LAST:event_btnSelecionarMousePressed
-
     private void btnSelecionarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnSelecionarKeyReleased
         if (evt.getKeyCode() == evt.VK_ENTER) {
             selecionar();
         }
     }//GEN-LAST:event_btnSelecionarKeyReleased
 
-    private void btnPadraoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPadraoMousePressed
-        //Menssagem de status do programa
-        flagStatus = 1;
-    }//GEN-LAST:event_btnPadraoMousePressed
-
     private void btnAplicarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnAplicarKeyReleased
         if (evt.getKeyCode() == evt.VK_ENTER) {
             alterar();
         }
     }//GEN-LAST:event_btnAplicarKeyReleased
-
-    private void btnAplicarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAplicarMousePressed
-        //Menssagem de status do programa
-        flagStatus = 1;
-    }//GEN-LAST:event_btnAplicarMousePressed
 
     private void btnPadraoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPadraoKeyReleased
         if (evt.getKeyCode() == evt.VK_ENTER) {
@@ -471,11 +409,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
             flagStatus = 2;
         }
     }//GEN-LAST:event_btnLeituraKeyReleased
-
-    private void btnLeituraMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLeituraMousePressed
-        //Menssagem de status do programa
-        flagStatus = 1;
-    }//GEN-LAST:event_btnLeituraMousePressed
 
     /**
      * @param args the command line arguments
@@ -535,10 +468,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
     //Seleciona porta COM
     private void selecionar() {
         
-        Runnable r = new Runnable(){
+        Runnable rSeleciona = new Runnable(){
             public void run(){
-                btnAtualizar.setEnabled(false);
-                btnSelecionar.setEnabled(false);
+                flagStatus = 1;
+                habilitarSelecao(false);
                 
                 //Verifica se existe uma porta selecionada
                 if(cbPortas.getSelectedItem() != (null)){
@@ -549,22 +482,23 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
                         //Ativar botões e campos
                         habilitar(true);
-                        btnSelecionar.setEnabled(false);
-                        btnAtualizar.setEnabled(false);
-                        cbPortas.setEnabled(false);
+                        habilitarSelecao(false);
+                        flagStatus = 2;
                     } else {
                         JOptionPane.showMessageDialog(null, "Porta Selecionada inválida!", "Alerta", JOptionPane.ERROR_MESSAGE);
-                        controleAplicativo.fechar();
+                        habilitarSelecao(true);
+                        flagStatus = 0;
                     }
                 }else{
-                    lbStatus.setText("");
-                    JOptionPane.showMessageDialog(null, "Nenhuma porta COM selecionada. Se necessário click em atualizar.",
+                    JOptionPane.showMessageDialog(null, "Nenhuma porta COM selecionada. Click em atualizar.",
                                 "Alerta", JOptionPane.ERROR_MESSAGE);
+                    habilitarSelecao(true);
+                    flagStatus = 0;
                 }
             }
         };
-        Thread t = new Thread(r);
-        t.start();
+        tSeleciona = new Thread(rSeleciona);
+        tSeleciona.start();
     }
 
     //**************************************************************************
@@ -580,16 +514,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         txtStopBits.setText(controleAplicativo.comando("get stopbits"));
         txtParity.setText(controleAplicativo.comando("get parity"));
         txtFormat.setText(controleAplicativo.comando("get format"));
-
-        //Menssagem de status do programa
-        flagStatus = 2;
     }
 
     //**************************************************************************
     //Aplica a nova configuração
     private void alterar() {
-        Runnable r = new Runnable(){
+        Runnable rAlterar = new Runnable(){
             public void run(){
+                flagStatus = 1;
                  boolean verifica = true;
                  habilitar(false);
 
@@ -642,17 +574,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Preencha campo corretamente.", "Alerta", JOptionPane.ERROR_MESSAGE);
                 }
                 habilitar(true);
+                flagStatus = 2;
             }
         };
-        Thread t = new Thread(r);
-        t.start();
+        tAlterar = new Thread(rAlterar);
+        tAlterar.start();
         
     }
 
     //**************************************************************************
     private void padrao() {
-        Runnable r = new Runnable(){
+        Runnable rPadrao = new Runnable(){
             public void run(){
+                flagStatus = 1;
                 boolean verifica = true;
                 habilitar(false);
 
@@ -702,10 +636,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     controleAplicativo.fechar();
                 }
                 habilitar(true);
+                flagStatus = 2;
             }
         };
-        Thread t = new Thread(r);
-        t.start();      
+        tPadrao = new Thread(rPadrao);
+        tPadrao.start();      
         
     }
 
@@ -721,8 +656,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnLeitura.setEnabled(false);
         txtSlaveadd.setEnabled(false);
         cbPortas.setEnabled(true);
+        
+        //Finalizar comunicação com a porta COM
+        controleAplicativo.fechar();
 
-        //Fecha porta COM e finaliza thread de leitura
+        //Status do programa
         flagStatus = 0;
     }
 
@@ -748,11 +686,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         Leitura leitura = new Leitura(this, true, controleAplicativo);
         leitura.setVisible(true);
         habilitar(true);
+        flagStatus = 2;
     }
     
     //**************************************************************************
     private void status(){
-        Runnable r = new Runnable(){
+        Runnable rStatus = new Runnable(){
             public void run(){
                 String msg[] = {".", "..", "..."};
                 for(int i = 0; ; i++){
@@ -772,8 +711,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 }
             }  
         };
-        Thread t = new Thread(r);
-        t.start();
+        tStatus = new Thread(rStatus);
+        tStatus.start();
     }
     
     //**************************************************************************
@@ -783,6 +722,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnAplicar.setEnabled(op);
         btnLeitura.setEnabled(op);
         btnPadrao.setEnabled(op);        
+    }
+    
+    //**************************************************************************
+    private void habilitarSelecao(boolean op){
+        btnSelecionar.setEnabled(op);
+        btnAtualizar.setEnabled(op);
+        cbPortas.setEnabled(op);
     }
     
     //**************************************************************************

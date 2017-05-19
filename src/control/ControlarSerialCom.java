@@ -9,6 +9,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Enumeration;
+import javax.swing.JOptionPane;
 import model.SerialCom;
 
 public class ControlarSerialCom implements Runnable, SerialPortEventListener {
@@ -77,6 +78,7 @@ public class ControlarSerialCom implements Runnable, SerialPortEventListener {
             System.out.println("Sucesso em obter o ID da porta: " + serialCom.getNome());
         } catch (Exception e) {
             System.out.println("Erro obtendo ID da porta: " + e);
+            JOptionPane.showMessageDialog(null, "Erro obtendo ID da porta: " + e, "Alerta", JOptionPane.ERROR_MESSAGE);
         }
         return serialCom;
     }
@@ -101,6 +103,7 @@ public class ControlarSerialCom implements Runnable, SerialPortEventListener {
             porta.setFlowControlMode(SerialPort.FLOWCONTROL_NONE);
         } catch (Exception e) {
             System.out.println("Erro abrindo comunicação: " + e);
+            JOptionPane.showMessageDialog(null, "Erro abrindo comunicação: " + e, "Alerta", JOptionPane.ERROR_MESSAGE);
         }
         return serialCom;
     }
@@ -117,6 +120,7 @@ public class ControlarSerialCom implements Runnable, SerialPortEventListener {
 
             } catch (Exception e) {
                 System.out.println("Erro.STATUS: " + e);
+                JOptionPane.showMessageDialog(null, "Erro.STATUS: " + e, "Alerta", JOptionPane.ERROR_MESSAGE);
             }
 
             try {
@@ -129,6 +133,7 @@ public class ControlarSerialCom implements Runnable, SerialPortEventListener {
             } catch (Exception e) {
                 System.out.println("Houve um erro durante o envio. ");
                 System.out.println("STATUS: " + e);
+                JOptionPane.showMessageDialog(null, "Houve um erro durante o envio. " + "STATUS: " + e, "Alerta", JOptionPane.ERROR_MESSAGE);
                 System.exit(1);
             }
 
@@ -147,6 +152,7 @@ public class ControlarSerialCom implements Runnable, SerialPortEventListener {
                 entrada = porta.getInputStream();
             } catch (Exception e) {
                 System.out.println("Erro de stream: " + e);
+                JOptionPane.showMessageDialog(null, "Erro de stream: " + e, "Alerta", JOptionPane.ERROR_MESSAGE);
                 System.exit(1);
             }
 
@@ -154,6 +160,7 @@ public class ControlarSerialCom implements Runnable, SerialPortEventListener {
                 porta.addEventListener(this);
             } catch (Exception e) {
                 System.out.println("Erro de listener: " + e);
+                JOptionPane.showMessageDialog(null, "Erro de listener: " + e, "Alerta", JOptionPane.ERROR_MESSAGE);
                 System.exit(1);
             }
             porta.notifyOnDataAvailable(true);
@@ -164,6 +171,7 @@ public class ControlarSerialCom implements Runnable, SerialPortEventListener {
                 run();
             } catch (Exception e) {
                 System.out.println("Erro de Thred: " + e);
+                JOptionPane.showMessageDialog(null, "Erro de Thred: " + e, "Alerta", JOptionPane.ERROR_MESSAGE);
             }
         }
     }
@@ -176,6 +184,7 @@ public class ControlarSerialCom implements Runnable, SerialPortEventListener {
             Thread.sleep(5);
         } catch (Exception e) {
             System.out.println("Erro de Thred: " + e);
+            JOptionPane.showMessageDialog(null, "Erro de Thred: " + e, "Alerta", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -213,6 +222,7 @@ public class ControlarSerialCom implements Runnable, SerialPortEventListener {
 
                     } catch (IOException ioe) {
                         System.out.println("Erro de leitura serial: " + ioe);
+                        JOptionPane.showMessageDialog(null, "Erro de leitura serial: " + ioe, "Alerta", JOptionPane.ERROR_MESSAGE);
                         System.exit(0);//Caso ocorra um erro de leitura finaliza o programa
                     }
                 }
@@ -231,7 +241,8 @@ public class ControlarSerialCom implements Runnable, SerialPortEventListener {
             threadLeitura.interrupt();// finaliza a Thread de leitura
             
         } catch (Exception e) {
-            System.out.println("Erro fechando porta: " + e);
+            System.out.println("Erro ao fechar a porta: " + e);
+            JOptionPane.showMessageDialog(null, "Erro ao fechar a porta: " + e, "Alerta", JOptionPane.ERROR_MESSAGE);
             System.exit(0);
         }
     }
