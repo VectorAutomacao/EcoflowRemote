@@ -8,11 +8,10 @@ package view;
 import control.ControlarAplicativo;
 import javax.swing.JOptionPane;
 
-
 public class Leitura extends javax.swing.JDialog {
-    
+
     private ControlarAplicativo controleAplicativo;
-    
+
     /**
      * Creates new form Leitura
      */
@@ -354,9 +353,9 @@ public class Leitura extends javax.swing.JDialog {
     }//GEN-LAST:event_btnAplicarKeyPressed
 
     private void txtCountKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCountKeyTyped
-         String caracteres="0987654321";//String com caractes validos
+        String caracteres = "0987654321";//String com caractes validos
         //Verifica se caracter e valido
-        if(!caracteres.contains(evt.getKeyChar()+"")){
+        if (!caracteres.contains(evt.getKeyChar() + "")) {
             evt.consume();
         }
     }//GEN-LAST:event_txtCountKeyTyped
@@ -367,7 +366,7 @@ public class Leitura extends javax.swing.JDialog {
     }//GEN-LAST:event_btnAplicarMousePressed
 
     private void btnAplicarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnAplicarKeyReleased
-        if (evt.getKeyCode() == evt.VK_ENTER){
+        if (evt.getKeyCode() == evt.VK_ENTER) {
             alterar();
             //Menssagem de status do programa
             lbStatus.setText("Concluído");
@@ -396,7 +395,112 @@ public class Leitura extends javax.swing.JDialog {
         lbStatus.setText("Aguarde...");
     }//GEN-LAST:event_btnAtualizarMousePressed
 
- 
+    //**************************************************************************
+    private void buscar() {
+        //Busca as leituras da remota
+        lbcount1.setText(controleAplicativo.comando("get count 1"));
+        lbcount2.setText(controleAplicativo.comando("get count 2"));
+        lbcount3.setText(controleAplicativo.comando("get count 3"));
+        lbcount4.setText(controleAplicativo.comando("get count 4"));
+        lbcount5.setText(controleAplicativo.comando("get count 5"));
+        lbcount6.setText(controleAplicativo.comando("get count 6"));
+        lbcount7.setText(controleAplicativo.comando("get count 7"));
+        lbcount8.setText(controleAplicativo.comando("get count 8"));
+        lbcount9.setText(controleAplicativo.comando("get count 9"));
+        lbcount10.setText(controleAplicativo.comando("get count 10"));
+        lbcount11.setText(controleAplicativo.comando("get count 11"));
+        lbcount12.setText(controleAplicativo.comando("get count 12"));
+        lbcount13.setText(controleAplicativo.comando("get count 13"));
+        lbcount14.setText(controleAplicativo.comando("get count 14"));
+        lbcount15.setText(controleAplicativo.comando("get count 15"));
+        lbcount16.setText(controleAplicativo.comando("get count 16"));
+    }
+
+    //**************************************************************************
+    private void buscar(int i) {
+        //Busca as leituras da remota da porta selecionada
+        if (i == 1) {
+            lbcount1.setText(controleAplicativo.comando("get count 1"));
+        }
+        if (i == 2) {
+            lbcount2.setText(controleAplicativo.comando("get count 2"));
+        }
+        if (i == 3) {
+            lbcount3.setText(controleAplicativo.comando("get count 3"));
+        }
+        if (i == 4) {
+            lbcount4.setText(controleAplicativo.comando("get count 4"));
+        }
+        if (i == 5) {
+            lbcount5.setText(controleAplicativo.comando("get count 5"));
+        }
+        if (i == 6) {
+            lbcount6.setText(controleAplicativo.comando("get count 6"));
+        }
+        if (i == 7) {
+            lbcount7.setText(controleAplicativo.comando("get count 7"));
+        }
+        if (i == 8) {
+            lbcount8.setText(controleAplicativo.comando("get count 8"));
+        }
+        if (i == 9) {
+            lbcount9.setText(controleAplicativo.comando("get count 9"));
+        }
+        if (i == 10) {
+            lbcount10.setText(controleAplicativo.comando("get count 10"));
+        }
+        if (i == 11) {
+            lbcount11.setText(controleAplicativo.comando("get count 11"));
+        }
+        if (i == 12) {
+            lbcount12.setText(controleAplicativo.comando("get count 12"));
+        }
+        if (i == 13) {
+            lbcount13.setText(controleAplicativo.comando("get count 13"));
+        }
+        if (i == 14) {
+            lbcount14.setText(controleAplicativo.comando("get count 14"));
+        }
+        if (i == 15) {
+            lbcount15.setText(controleAplicativo.comando("get count 15"));
+        }
+        if (i == 16) {
+            lbcount16.setText(controleAplicativo.comando("get count 16"));
+        }
+    }
+
+    //**************************************************************************
+    private void alterar() {
+        boolean verifica = true;
+
+        //Verifica se textField não e nulo
+        if (!txtCount.getText().trim().equals("")) {
+            //alterar valores do count
+            if (!controleAplicativo.comando("set count " + (String) cbPorta.getSelectedItem() + " " + txtCount.getText().trim()).equals("ok\r")) {
+                verifica = false;
+            }
+
+            //Verifica-se todos os comandos foram enviado com sucesso
+            if (verifica) {
+                //verifica se as alterações foram salvas
+                if (!controleAplicativo.comando("save").equals("ok\r")) { //Caso ocorra um problema ao salvar as configurações
+                    JOptionPane.showMessageDialog(null, "Ocorreu um problema em salvar as configurações! Tente novamente.",
+                            "Alerta", JOptionPane.ERROR_MESSAGE);
+                    controleAplicativo.fechar();
+                } else {// Caso as configurações salvas com sucesso
+                    buscar(Integer.parseInt((String) cbPorta.getSelectedItem()));
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Ocorreu um problema em alterar as configurações! Tente novamente.",
+                        "Alerta", JOptionPane.ERROR_MESSAGE);
+                controleAplicativo.fechar();
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Preencha campo corretamente.", "Alerta", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    //**************************************************************************
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAplicar;
@@ -441,97 +545,5 @@ public class Leitura extends javax.swing.JDialog {
     private javax.swing.JLabel lbcount9;
     private javax.swing.JTextField txtCount;
     // End of variables declaration//GEN-END:variables
-    
-    //**************************************************************************
-    
-    private void buscar(){
-        //Busca as leituras da remota
-        lbcount1.setText( controleAplicativo.comando("get count 1"));
-        lbcount2.setText( controleAplicativo.comando("get count 2"));
-        lbcount3.setText( controleAplicativo.comando("get count 3"));
-        lbcount4.setText( controleAplicativo.comando("get count 4"));
-        lbcount5.setText( controleAplicativo.comando("get count 5"));
-        lbcount6.setText( controleAplicativo.comando("get count 6"));
-        lbcount7.setText( controleAplicativo.comando("get count 7"));
-        lbcount8.setText( controleAplicativo.comando("get count 8"));
-        lbcount9.setText( controleAplicativo.comando("get count 9"));
-        lbcount10.setText( controleAplicativo.comando("get count 10"));
-        lbcount11.setText( controleAplicativo.comando("get count 11"));
-        lbcount12.setText( controleAplicativo.comando("get count 12"));
-        lbcount13.setText( controleAplicativo.comando("get count 13"));
-        lbcount14.setText( controleAplicativo.comando("get count 14"));
-        lbcount15.setText( controleAplicativo.comando("get count 15"));
-        lbcount16.setText( controleAplicativo.comando("get count 16"));
-    }
-    
-    //**************************************************************************
-    
-    private void buscar(int i){
-        //Busca as leituras da remota da porta selecionada
-        if(i == 1)
-            lbcount1.setText( controleAplicativo.comando("get count 1"));
-        if(i == 2)
-            lbcount2.setText( controleAplicativo.comando("get count 2"));
-        if(i == 3)
-            lbcount3.setText( controleAplicativo.comando("get count 3"));
-        if(i == 4)
-            lbcount4.setText( controleAplicativo.comando("get count 4"));
-        if(i == 5)
-            lbcount5.setText( controleAplicativo.comando("get count 5"));
-        if(i == 6)
-            lbcount6.setText( controleAplicativo.comando("get count 6"));
-        if(i == 7)
-            lbcount7.setText( controleAplicativo.comando("get count 7"));
-        if(i == 8)
-            lbcount8.setText( controleAplicativo.comando("get count 8"));
-        if(i == 9)
-            lbcount9.setText( controleAplicativo.comando("get count 9"));
-        if(i == 10)
-            lbcount10.setText( controleAplicativo.comando("get count 10"));
-        if(i == 11)
-            lbcount11.setText( controleAplicativo.comando("get count 11"));
-        if(i == 12)
-            lbcount12.setText( controleAplicativo.comando("get count 12"));
-        if(i == 13)
-            lbcount13.setText( controleAplicativo.comando("get count 13"));
-        if(i == 14)
-            lbcount14.setText( controleAplicativo.comando("get count 14"));
-        if(i == 15)
-            lbcount15.setText( controleAplicativo.comando("get count 15"));
-        if(i == 16)
-            lbcount16.setText( controleAplicativo.comando("get count 16"));
-    }
-    
-    //**************************************************************************
-    
-    private void alterar(){
-        boolean verifica = true;
-        
-        //Verifica se textField não e nulo
-        if(!txtCount.getText().trim().equals("") ){
-            //alterar valores do count
-            if(!controleAplicativo.comando("set count "+(String) cbPorta.getSelectedItem()+" "+ txtCount.getText().trim()).equals("ok\r") )
-                verifica = false;
 
-            //Verifica-se todos os comandos foram enviado com sucesso
-            if(verifica){
-                //verifica se as alterações foram salvas
-                if(!controleAplicativo.comando("save").equals("ok\r") ){ //Caso ocorra um problema ao salvar as configurações
-                    JOptionPane.showMessageDialog(null, "Ocorreu um problema em salvar as configurações! Tente novamente.",
-                        "Alerta",JOptionPane.ERROR_MESSAGE);
-                    controleAplicativo.fechar();
-                }else{// Caso as configurações salvas com sucesso
-                    buscar( Integer.parseInt((String) cbPorta.getSelectedItem()) );
-                }
-            }else{
-                JOptionPane.showMessageDialog(null, "Ocorreu um problema em alterar as configurações! Tente novamente.",
-                        "Alerta",JOptionPane.ERROR_MESSAGE);
-                controleAplicativo.fechar();
-            }
-        }else{
-            JOptionPane.showMessageDialog(null, "Preencha campo corretamente.", "Alerta", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-    
-    //**************************************************************************
 }

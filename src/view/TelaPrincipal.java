@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 import model.SerialCom;
 
 public class TelaPrincipal extends javax.swing.JFrame {
-    
+
     private ControlarAplicativo controleAplicativo = new ControlarAplicativo();
 
     public TelaPrincipal() {
@@ -391,12 +391,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void btnSelecionarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnSelecionarKeyPressed
         //Menssagem de status do programa
-        lbStatus.setText("Aguarde...");            
+        lbStatus.setText("Aguarde...");
     }//GEN-LAST:event_btnSelecionarKeyPressed
 
     private void btnAtualizarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnAtualizarKeyPressed
-        if (evt.getKeyCode() == evt.VK_ENTER)
+        if (evt.getKeyCode() == evt.VK_ENTER) {
             listaSerialCom();
+        }
     }//GEN-LAST:event_btnAtualizarKeyPressed
 
     private void btnPadraoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPadraoKeyPressed
@@ -415,16 +416,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLeituraKeyPressed
 
     private void btnFinalizarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnFinalizarKeyPressed
-        if (evt.getKeyCode() == evt.VK_ENTER){
+        if (evt.getKeyCode() == evt.VK_ENTER) {
             limpar();
             finalizar();
         }
     }//GEN-LAST:event_btnFinalizarKeyPressed
 
     private void txtSlaveaddKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSlaveaddKeyTyped
-        String caracteres="0987654321";//String com caractes validos
+        String caracteres = "0987654321";//String com caractes validos
         //Verifica se caracter e valido
-        if(!caracteres.contains(evt.getKeyChar()+"")){
+        if (!caracteres.contains(evt.getKeyChar() + "")) {
             evt.consume();
         }
     }//GEN-LAST:event_txtSlaveaddKeyTyped
@@ -435,8 +436,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSelecionarMousePressed
 
     private void btnSelecionarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnSelecionarKeyReleased
-        if (evt.getKeyCode() == evt.VK_ENTER)
+        if (evt.getKeyCode() == evt.VK_ENTER) {
             selecionar();
+        }
     }//GEN-LAST:event_btnSelecionarKeyReleased
 
     private void btnPadraoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPadraoMousePressed
@@ -445,8 +447,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPadraoMousePressed
 
     private void btnAplicarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnAplicarKeyReleased
-        if (evt.getKeyCode() == evt.VK_ENTER)
+        if (evt.getKeyCode() == evt.VK_ENTER) {
             alterar();
+        }
     }//GEN-LAST:event_btnAplicarKeyReleased
 
     private void btnAplicarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAplicarMousePressed
@@ -455,12 +458,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAplicarMousePressed
 
     private void btnPadraoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPadraoKeyReleased
-        if (evt.getKeyCode() == evt.VK_ENTER)
+        if (evt.getKeyCode() == evt.VK_ENTER) {
             padrao();
+        }
     }//GEN-LAST:event_btnPadraoKeyReleased
 
     private void btnLeituraKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnLeituraKeyReleased
-        if (evt.getKeyCode() == evt.VK_ENTER){
+        if (evt.getKeyCode() == evt.VK_ENTER) {
             //Painel de leitura da remota
             Leitura leitura = new Leitura(this, true, controleAplicativo);
             //Menssagem de status do programa
@@ -508,7 +512,208 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
     }
-    
+
+    //**************************************************************************
+    //Icone da janela
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("ECOFlow.png")));
+    }
+
+    //**************************************************************************
+    //Lista de portas de comunicação ativas
+    private void listaSerialCom() {
+        DefaultComboBoxModel comboModel = (DefaultComboBoxModel) cbPortas.getModel();
+        comboModel.removeAllElements();
+
+        ArrayList<SerialCom> listas = controleAplicativo.getListaSerialCom();
+        for (int i = 0; i < listas.size(); i++) {
+            SerialCom com = listas.get(i);
+            comboModel.addElement(com.getNome());
+        }
+    }
+
+    //**************************************************************************
+    //Seleciona porta COM
+    private void selecionar() {
+        //Verifica se porta COM selecionada e valida
+        if (controleAplicativo.selecionarPorta((String) cbPortas.getSelectedItem()).equals("ok\r")) {
+            //Busca as configurações da remota
+            buscar();
+
+            //Ativar botões e campos
+            btnPadrao.setEnabled(true);
+            btnAplicar.setEnabled(true);
+            btnFinalizar.setEnabled(true);
+            btnSelecionar.setEnabled(false);
+            btnAtualizar.setEnabled(false);
+            btnLeitura.setEnabled(true);
+            txtSlaveadd.setEnabled(true);
+            cbPortas.setEnabled(false);
+        } else {
+            JOptionPane.showMessageDialog(null, "Porta Selecionada inválida!", "Alerta", JOptionPane.ERROR_MESSAGE);
+            controleAplicativo.fechar();
+        }
+    }
+
+    //**************************************************************************
+    private void buscar() {
+        //Busca valor atual configurado
+        txtSlaveadd.setText(controleAplicativo.comando("get slaveadd"));
+        txtInitialRegister.setText(controleAplicativo.comando("get initialregister"));
+        txtInitialInput.setText(controleAplicativo.comando("get initialinput"));
+        txtMaxpulses.setText(controleAplicativo.comando("get maxpulses"));
+        txtRegSize.setText(controleAplicativo.comando("get regsize"));
+        txtBaudrate.setText(controleAplicativo.comando("get baudrate"));
+        txtStopBits.setText(controleAplicativo.comando("get stopbits"));
+        txtParity.setText(controleAplicativo.comando("get parity"));
+        txtFormat.setText(controleAplicativo.comando("get format"));
+
+        //Menssagem de status do programa
+        lbStatus.setText("Concluído");
+    }
+
+    //**************************************************************************
+    //Aplica a nova configuração
+    private void alterar() {
+
+        boolean verifica = true;
+
+        //Verifica se textField não e nulo
+        if (!txtSlaveadd.getText().trim().equals("")) {
+            if (!controleAplicativo.comando("set slaveadd " + txtSlaveadd.getText().trim()).equals("ok\r")) {
+                verifica = false;
+            }
+            if (!controleAplicativo.comando("set initialregister 33").equals("ok\r")) {
+                verifica = false;
+            }
+            if (!controleAplicativo.comando("set initialinput 1").equals("ok\r")) {
+                verifica = false;
+            }
+            if (!controleAplicativo.comando("set maxpulses 999").equals("ok\r")) {
+                verifica = false;
+            }
+            if (!controleAplicativo.comando("set regsize 2").equals("ok\r")) {
+                verifica = false;
+            }
+            if (!controleAplicativo.comando("set baudrate 9600").equals("ok\r")) {
+                verifica = false;
+            }
+            if (!controleAplicativo.comando("set stopbits 1").equals("ok\r")) {
+                verifica = false;
+            }
+            if (!controleAplicativo.comando("set parity 0").equals("ok\r")) {
+                verifica = false;
+            }
+            if (!controleAplicativo.comando("set format bin").equals("ok\r")) {
+                verifica = false;
+            }
+            //Verifica-se todos os comandos foram enviado com sucesso
+            if (verifica) {
+                //verifica se as alterações foram salvas
+                if (!controleAplicativo.comando("save").equals("ok\r")) {//Caso tenha um problema em salvar as configurações
+                    JOptionPane.showMessageDialog(null, "Ocorreu um problema em salvar as configurações! Tente novamente.",
+                            "Alerta", JOptionPane.ERROR_MESSAGE);
+                    controleAplicativo.fechar();
+                } else {//Caso comando foi salvo na remota com sucesso
+                    //Busca as configurações da remota
+                    buscar();
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Ocorreu um problema em alterar as configurações! Tente novamente.",
+                        "Alerta", JOptionPane.ERROR_MESSAGE);
+                controleAplicativo.fechar();
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Preencha campo corretamente.", "Alerta", JOptionPane.ERROR_MESSAGE);
+        }
+
+    }
+
+    //**************************************************************************
+    private void padrao() {
+        boolean verifica = true;
+
+        //Aplica a configuração padrão
+        if (!controleAplicativo.comando("set slaveadd 1").equals("ok\r")) {
+            verifica = false;
+        }
+        if (!controleAplicativo.comando("set initialregister 33").equals("ok\r")) {
+            verifica = false;
+        }
+        if (!controleAplicativo.comando("set initialinput 1").equals("ok\r")) {
+            verifica = false;
+        }
+        if (!controleAplicativo.comando("set maxpulses 999").equals("ok\r")) {
+            verifica = false;
+        }
+        if (!controleAplicativo.comando("set regsize 2").equals("ok\r")) {
+            verifica = false;
+        }
+        if (!controleAplicativo.comando("set baudrate 9600").equals("ok\r")) {
+            verifica = false;
+        }
+        if (!controleAplicativo.comando("set stopbits 1").equals("ok\r")) {
+            verifica = false;
+        }
+        if (!controleAplicativo.comando("set parity 0").equals("ok\r")) {
+            verifica = false;
+        }
+        if (!controleAplicativo.comando("set format bin").equals("ok\r")) {
+            verifica = false;
+        }
+
+        //Verifica-se todos os comandos foram enviado com sucesso
+        if (verifica) {
+            //verifica se as alterações foram salvas
+            if (!controleAplicativo.comando("save").equals("ok\r")) {//Caso tenha um problema em salvar as configurações
+                JOptionPane.showMessageDialog(null, "Ocorreu um problema em salvar as configurações! Tente novamente.",
+                        "Alerta", JOptionPane.ERROR_MESSAGE);
+                controleAplicativo.fechar();
+            } else { //Caso comando foi salvo na remota com sucesso
+                //Busca as configurações da remota
+                buscar();
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Ocorreu um problema em alterar as configurações! Tente novamente.",
+                    "Alerta", JOptionPane.ERROR_MESSAGE);
+            controleAplicativo.fechar();
+        }
+    }
+
+    //**************************************************************************
+    private void finalizar() {
+
+        //Ativar e desativar botões e campos
+        btnPadrao.setEnabled(false);
+        btnAplicar.setEnabled(false);
+        btnFinalizar.setEnabled(false);
+        btnSelecionar.setEnabled(true);
+        btnAtualizar.setEnabled(true);
+        btnLeitura.setEnabled(false);
+        txtSlaveadd.setEnabled(false);
+        cbPortas.setEnabled(true);
+
+        //Fecha porta COM e finaliza thread de leitura
+        controleAplicativo.fechar();
+    }
+
+    //**************************************************************************
+    private void limpar() {
+        //Limpar os dados dos campos
+        txtSlaveadd.setText(null);
+        txtInitialRegister.setText(null);
+        txtInitialInput.setText(null);
+        txtMaxpulses.setText(null);
+        txtRegSize.setText(null);
+        txtBaudrate.setText(null);
+        txtStopBits.setText(null);
+        txtParity.setText(null);
+        txtFormat.setText(null);
+        lbStatus.setText("");
+    }
+
+    //**************************************************************************
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAplicar;
     private javax.swing.JButton btnAtualizar;
@@ -541,196 +746,5 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField txtSlaveadd;
     private javax.swing.JTextField txtStopBits;
     // End of variables declaration//GEN-END:variables
-
-    //**************************************************************************
-    
-    //Icone da janela
-    private void setIcon() {
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("ECOFlow.png")));
-    }
-    
-    //**************************************************************************
-    
-    //Lista de portas de comunicação ativas
-    private void listaSerialCom(){
-        DefaultComboBoxModel comboModel = (DefaultComboBoxModel) cbPortas.getModel();
-        comboModel.removeAllElements();
-        
-        ArrayList<SerialCom> listas = controleAplicativo.getListaSerialCom();
-        for(int i = 0; i < listas.size(); i++ ){
-            SerialCom com = listas.get(i);
-            comboModel.addElement(com.getNome() );
-        }
-    }
-    
-    //**************************************************************************
-    
-    //Seleciona porta COM
-    private void selecionar(){
-        //Verifica se porta COM selecionada e valida
-        if(controleAplicativo.selecionarPorta((String) cbPortas.getSelectedItem()).equals("ok\r") ){
-            //Busca as configurações da remota
-            buscar();
-            
-            //Ativar botões e campos
-            btnPadrao.setEnabled(true);
-            btnAplicar.setEnabled(true);
-            btnFinalizar.setEnabled(true);
-            btnSelecionar.setEnabled(false);
-            btnAtualizar.setEnabled(false);
-            btnLeitura.setEnabled(true);
-            txtSlaveadd.setEnabled(true);
-            cbPortas.setEnabled(false);
-        }else{
-            JOptionPane.showMessageDialog(null, "Porta Selecionada inválida!", "Alerta",JOptionPane.ERROR_MESSAGE);
-            controleAplicativo.fechar();
-        }
-    }
-    
-    //**************************************************************************
-    
-    private void buscar(){        
-        //Busca valor atual configurado
-        txtSlaveadd.setText(controleAplicativo.comando("get slaveadd") );
-        txtInitialRegister.setText(controleAplicativo.comando("get initialregister") );
-        txtInitialInput.setText(controleAplicativo.comando("get initialinput") );
-        txtMaxpulses.setText(controleAplicativo.comando("get maxpulses") );
-        txtRegSize.setText(controleAplicativo.comando("get regsize") );
-        txtBaudrate.setText(controleAplicativo.comando("get baudrate") );
-        txtStopBits.setText(controleAplicativo.comando("get stopbits") );
-        txtParity.setText(controleAplicativo.comando("get parity") );
-        txtFormat.setText(controleAplicativo.comando("get format") );
-        
-        //Menssagem de status do programa
-        lbStatus.setText("Concluído");
-    }
-    
-    //**************************************************************************
-   
-    //Aplica a nova configuração
-    private void alterar(){
-        
-        boolean verifica = true;
-        
-        //Verifica se textField não e nulo
-        if(!txtSlaveadd.getText().trim().equals("") ){
-            if(!controleAplicativo.comando("set slaveadd " + txtSlaveadd.getText().trim() ).equals("ok\r") )
-                verifica = false;
-            if(!controleAplicativo.comando("set initialregister 33").equals("ok\r") )
-                verifica = false;
-            if(!controleAplicativo.comando("set initialinput 1").equals("ok\r") )
-                verifica = false;
-            if(!controleAplicativo.comando("set maxpulses 999").equals("ok\r") )
-                verifica = false;
-            if(!controleAplicativo.comando("set regsize 2").equals("ok\r") )
-                verifica = false;
-            if(!controleAplicativo.comando("set baudrate 9600").equals("ok\r") )
-                verifica = false;
-            if(!controleAplicativo.comando("set stopbits 1").equals("ok\r") )
-                verifica = false;
-            if(!controleAplicativo.comando("set parity 0").equals("ok\r") )
-                verifica = false;
-            if(!controleAplicativo.comando("set format bin").equals("ok\r") )
-                verifica = false;
-            //Verifica-se todos os comandos foram enviado com sucesso
-            if(verifica){
-                //verifica se as alterações foram salvas
-                if(!controleAplicativo.comando("save").equals("ok\r") ){//Caso tenha um problema em salvar as configurações
-                    JOptionPane.showMessageDialog(null, "Ocorreu um problema em salvar as configurações! Tente novamente.",
-                        "Alerta",JOptionPane.ERROR_MESSAGE);
-                    controleAplicativo.fechar();
-                }else{//Caso comando foi salvo na remota com sucesso
-                    //Busca as configurações da remota
-                    buscar();
-                }
-            }else{
-                JOptionPane.showMessageDialog(null, "Ocorreu um problema em alterar as configurações! Tente novamente.",
-                        "Alerta",JOptionPane.ERROR_MESSAGE);
-                controleAplicativo.fechar();
-            }
-        }else{
-            JOptionPane.showMessageDialog(null, "Preencha campo corretamente.", "Alerta", JOptionPane.ERROR_MESSAGE);
-        }
-        
-    }
-    
-    //**************************************************************************
-    
-    private void padrao(){
-        boolean verifica = true;
-        
-        //Aplica a configuração padrão
-        if(!controleAplicativo.comando("set slaveadd 1").equals("ok\r") )
-            verifica = false;
-        if(!controleAplicativo.comando("set initialregister 33").equals("ok\r") )
-            verifica = false;
-        if(!controleAplicativo.comando("set initialinput 1").equals("ok\r") )
-            verifica = false;
-        if(!controleAplicativo.comando("set maxpulses 999").equals("ok\r") )
-            verifica = false;
-        if(!controleAplicativo.comando("set regsize 2").equals("ok\r") )
-            verifica = false;
-        if(!controleAplicativo.comando("set baudrate 9600").equals("ok\r") )
-            verifica = false;
-        if(!controleAplicativo.comando("set stopbits 1").equals("ok\r") )
-            verifica = false;
-        if(!controleAplicativo.comando("set parity 0").equals("ok\r") )
-            verifica = false;
-        if(!controleAplicativo.comando("set format bin").equals("ok\r") )
-            verifica = false;
-        
-        //Verifica-se todos os comandos foram enviado com sucesso
-        if(verifica){
-            //verifica se as alterações foram salvas
-            if(!controleAplicativo.comando("save").equals("ok\r") ){//Caso tenha um problema em salvar as configurações
-                JOptionPane.showMessageDialog(null, "Ocorreu um problema em salvar as configurações! Tente novamente.",
-                    "Alerta",JOptionPane.ERROR_MESSAGE);
-                controleAplicativo.fechar();
-            }else{ //Caso comando foi salvo na remota com sucesso
-                //Busca as configurações da remota
-                buscar();
-            }
-        }else{
-            JOptionPane.showMessageDialog(null, "Ocorreu um problema em alterar as configurações! Tente novamente.",
-                    "Alerta",JOptionPane.ERROR_MESSAGE);
-            controleAplicativo.fechar();
-        }
-    }
-    
-    //**************************************************************************
-    
-    private void finalizar(){
-        
-        //Ativar e desativar botões e campos
-        btnPadrao.setEnabled(false);
-        btnAplicar.setEnabled(false);
-        btnFinalizar.setEnabled(false);
-        btnSelecionar.setEnabled(true);
-        btnAtualizar.setEnabled(true);
-        btnLeitura.setEnabled(false);
-        txtSlaveadd.setEnabled(false);
-        cbPortas.setEnabled(true);
-        
-        //Fecha porta COM e finaliza thread de leitura
-        controleAplicativo.fechar();
-    }
-    
-    //**************************************************************************
-    
-    private void limpar(){
-        //Limpar os dados dos campos
-        txtSlaveadd.setText(null);
-        txtInitialRegister.setText(null);
-        txtInitialInput.setText(null);
-        txtMaxpulses.setText(null);
-        txtRegSize.setText(null);
-        txtBaudrate.setText(null);
-        txtStopBits.setText(null);
-        txtParity.setText(null);
-        txtFormat.setText(null);
-        lbStatus.setText("");
-    }
-    
-    //**************************************************************************
 
 }
