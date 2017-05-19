@@ -559,7 +559,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
             lbStatus.setText("");
             JOptionPane.showMessageDialog(null, "Nenhuma porta COM selecionada. Se necessário click em atualizar.",
                         "Alerta", JOptionPane.ERROR_MESSAGE);
-                controleAplicativo.fechar();
         }
     }
 
