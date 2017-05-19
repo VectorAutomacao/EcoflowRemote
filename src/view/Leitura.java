@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 public class Leitura extends javax.swing.JDialog {
 
     private ControlarAplicativo controleAplicativo;
+    private static int flagStatus = 0;
 
     /**
      * Creates new form Leitura
@@ -18,8 +19,9 @@ public class Leitura extends javax.swing.JDialog {
     public Leitura(java.awt.Frame parent, boolean modal, ControlarAplicativo controleAplicativo) {
         super(parent, modal);
         initComponents();
+        status();
         this.controleAplicativo = controleAplicativo;
-        buscar();
+        atualizar();
     }
 
     /**
@@ -83,20 +85,12 @@ public class Leitura extends javax.swing.JDialog {
         btnAplicar.setMnemonic('A');
         btnAplicar.setText("Aplicar");
         btnAplicar.setNextFocusableComponent(btnAtualizar);
-        btnAplicar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnAplicarMousePressed(evt);
-            }
-        });
         btnAplicar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAplicarActionPerformed(evt);
             }
         });
         btnAplicar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                btnAplicarKeyPressed(evt);
-            }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 btnAplicarKeyReleased(evt);
             }
@@ -149,20 +143,12 @@ public class Leitura extends javax.swing.JDialog {
         btnAtualizar.setText("Atualizar");
         btnAtualizar.setToolTipText("");
         btnAtualizar.setNextFocusableComponent(cbPorta);
-        btnAtualizar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnAtualizarMousePressed(evt);
-            }
-        });
         btnAtualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAtualizarActionPerformed(evt);
             }
         });
         btnAtualizar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                btnAtualizarKeyPressed(evt);
-            }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 btnAtualizarKeyReleased(evt);
             }
@@ -343,14 +329,7 @@ public class Leitura extends javax.swing.JDialog {
 
     private void btnAplicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAplicarActionPerformed
         alterar();
-        //Menssagem de status do programa
-        lbStatus.setText("Concluído");
     }//GEN-LAST:event_btnAplicarActionPerformed
-
-    private void btnAplicarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnAplicarKeyPressed
-        //Menssagem de status do programa
-        lbStatus.setText("Aguarde...");
-    }//GEN-LAST:event_btnAplicarKeyPressed
 
     private void txtCountKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCountKeyTyped
         String caracteres = "0987654321";//String com caractes validos
@@ -360,43 +339,23 @@ public class Leitura extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_txtCountKeyTyped
 
-    private void btnAplicarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAplicarMousePressed
-        //Menssagem de status do programa
-        lbStatus.setText("Aguarde...");
-    }//GEN-LAST:event_btnAplicarMousePressed
-
     private void btnAplicarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnAplicarKeyReleased
         if (evt.getKeyCode() == evt.VK_ENTER) {
             alterar();
-            //Menssagem de status do programa
-            lbStatus.setText("Concluído");
         }
     }//GEN-LAST:event_btnAplicarKeyReleased
 
     private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
-        buscar();
-        //Menssagem de status do programa
-        lbStatus.setText("Concluído");
+        atualizar();
     }//GEN-LAST:event_btnAtualizarActionPerformed
 
-    private void btnAtualizarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnAtualizarKeyPressed
-        //Menssagem de status do programa
-        lbStatus.setText("Aguarde...");
-    }//GEN-LAST:event_btnAtualizarKeyPressed
-
     private void btnAtualizarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnAtualizarKeyReleased
-        buscar();
-        //Menssagem de status do programa
-        lbStatus.setText("Concluído");
+        atualizar();
     }//GEN-LAST:event_btnAtualizarKeyReleased
-
-    private void btnAtualizarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAtualizarMousePressed
-        //Menssagem de status do programa
-        lbStatus.setText("Aguarde...");
-    }//GEN-LAST:event_btnAtualizarMousePressed
 
     //**************************************************************************
     private void buscar() {
+        limpar();
         //Busca as leituras da remota
         lbcount1.setText(controleAplicativo.comando("get count 1"));
         lbcount2.setText(controleAplicativo.comando("get count 2"));
@@ -470,36 +429,116 @@ public class Leitura extends javax.swing.JDialog {
     }
 
     //**************************************************************************
+    private void limpar(){
+        lbcount1.setText("");
+        lbcount2.setText("");
+        lbcount3.setText("");
+        lbcount4.setText("");
+        lbcount5.setText("");
+        lbcount6.setText("");
+        lbcount7.setText("");
+        lbcount8.setText("");
+        lbcount9.setText("");
+        lbcount10.setText("");
+        lbcount11.setText("");
+        lbcount12.setText("");
+        lbcount13.setText("");
+        lbcount14.setText("");
+        lbcount15.setText("");
+        lbcount16.setText("");
+    }
+    
+    //**************************************************************************
     private void alterar() {
-        boolean verifica = true;
+        Runnable r = new Runnable(){
+            public void run(){
+                flagStatus = 1;
+                habilitar(false);
+                boolean verifica = true;
 
-        //Verifica se textField não e nulo
-        if (!txtCount.getText().trim().equals("")) {
-            //alterar valores do count
-            if (!controleAplicativo.comando("set count " + (String) cbPorta.getSelectedItem() + " " + txtCount.getText().trim()).equals("ok\r")) {
-                verifica = false;
-            }
+                //Verifica se textField não e nulo
+                if (!txtCount.getText().trim().equals("")) {
+                    //alterar valores do count
+                    if (!controleAplicativo.comando("set count " + (String) cbPorta.getSelectedItem() + " " + txtCount.getText().trim()).equals("ok\r")) {
+                        verifica = false;
+                    }
 
-            //Verifica-se todos os comandos foram enviado com sucesso
-            if (verifica) {
-                //verifica se as alterações foram salvas
-                if (!controleAplicativo.comando("save").equals("ok\r")) { //Caso ocorra um problema ao salvar as configurações
-                    JOptionPane.showMessageDialog(null, "Ocorreu um problema em salvar as configurações! Tente novamente.",
-                            "Alerta", JOptionPane.ERROR_MESSAGE);
-                    controleAplicativo.fechar();
-                } else {// Caso as configurações salvas com sucesso
-                    buscar(Integer.parseInt((String) cbPorta.getSelectedItem()));
+                    //Verifica-se todos os comandos foram enviado com sucesso
+                    if (verifica) {
+                        //verifica se as alterações foram salvas
+                        if (!controleAplicativo.comando("save").equals("ok\r")) { //Caso ocorra um problema ao salvar as configurações
+                            JOptionPane.showMessageDialog(null, "Ocorreu um problema em salvar as configurações! Tente novamente.",
+                                    "Alerta", JOptionPane.ERROR_MESSAGE);
+                            controleAplicativo.fechar();
+                        } else {// Caso as configurações salvas com sucesso
+                            buscar(Integer.parseInt((String) cbPorta.getSelectedItem()));
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Ocorreu um problema em alterar as configurações! Tente novamente.",
+                                "Alerta", JOptionPane.ERROR_MESSAGE);
+                        controleAplicativo.fechar();
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Preencha campo corretamente.", "Alerta", JOptionPane.ERROR_MESSAGE);
                 }
-            } else {
-                JOptionPane.showMessageDialog(null, "Ocorreu um problema em alterar as configurações! Tente novamente.",
-                        "Alerta", JOptionPane.ERROR_MESSAGE);
-                controleAplicativo.fechar();
+                habilitar(true);
+                flagStatus = 2;
             }
-        } else {
-            JOptionPane.showMessageDialog(null, "Preencha campo corretamente.", "Alerta", JOptionPane.ERROR_MESSAGE);
-        }
+        };
+        Thread t = new Thread(r);
+        t.start();
+       
+    }
+    
+    //**************************************************************************
+    private void atualizar(){
+        Runnable r = new Runnable(){
+            public void run(){
+                flagStatus = 1;
+                habilitar(false);
+                buscar();
+                habilitar(true);
+                flagStatus = 2;
+            }
+        };
+        Thread t = new Thread(r);
+        t.start();
+    }
+    
+    //**************************************************************************
+    private void status(){
+        Runnable r = new Runnable(){
+            public void run(){
+                String msg[] = {".", "..", "..."};
+                for(int i = 0; ; i++){
+                    if(i > 2) i = 0;      
+                    if(flagStatus == 0)
+                        lbStatus.setText("");
+                    if(flagStatus == 1)
+                        lbStatus.setText("Aguarde" + msg[i]);
+                    if(flagStatus == 2)
+                        lbStatus.setText("Concluído.");
+                    //Tempo de espera
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException ex) {
+                        System.out.println("Erro na Thread de status do programa: " + ex);
+                    }
+                }
+            }  
+        };
+        Thread t = new Thread(r);
+        t.start();
     }
 
+    //**************************************************************************
+    private void habilitar(boolean op){
+        btnAtualizar.setEnabled(op);
+        btnAplicar.setEnabled(op);
+        cbPorta.setEnabled(op);
+        txtCount.setEnabled(op);
+    }
+    
     //**************************************************************************
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

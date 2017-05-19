@@ -10,9 +10,11 @@ import model.SerialCom;
 public class TelaPrincipal extends javax.swing.JFrame {
 
     private ControlarAplicativo controleAplicativo = new ControlarAplicativo();
+    private static int flagStatus = 0;
 
     public TelaPrincipal() {
         initComponents();
+        status();
         listaSerialCom();
         setIcon();
     }
@@ -382,16 +384,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAtualizarActionPerformed
 
     private void btnLeituraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLeituraActionPerformed
-        //Abrir painel de leitura da remota
-        Leitura leitura = new Leitura(this, true, controleAplicativo);
-        leitura.setVisible(true);
+        leitura();
         //Menssagem de status do programa
-        lbStatus.setText("Concluído");
+        flagStatus = 2;
     }//GEN-LAST:event_btnLeituraActionPerformed
 
     private void btnSelecionarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnSelecionarKeyPressed
         //Menssagem de status do programa
-        lbStatus.setText("Aguarde...");
+        flagStatus = 1;
     }//GEN-LAST:event_btnSelecionarKeyPressed
 
     private void btnAtualizarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnAtualizarKeyPressed
@@ -402,17 +402,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void btnPadraoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPadraoKeyPressed
         //Menssagem de status do programa
-        lbStatus.setText("Aguarde...");
+        flagStatus = 1;
     }//GEN-LAST:event_btnPadraoKeyPressed
 
     private void btnAplicarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnAplicarKeyPressed
         //Menssagem de status do programa
-        lbStatus.setText("Aguarde...");
+        flagStatus = 1;
     }//GEN-LAST:event_btnAplicarKeyPressed
 
     private void btnLeituraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnLeituraKeyPressed
         //Menssagem de status do programa
-        lbStatus.setText("Aguarde...");
+        flagStatus = 1;
     }//GEN-LAST:event_btnLeituraKeyPressed
 
     private void btnFinalizarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnFinalizarKeyPressed
@@ -432,7 +432,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void btnSelecionarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSelecionarMousePressed
         //Menssagem de status do programa
-        lbStatus.setText("Aguarde...");
+        flagStatus = 1;
     }//GEN-LAST:event_btnSelecionarMousePressed
 
     private void btnSelecionarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnSelecionarKeyReleased
@@ -443,7 +443,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void btnPadraoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPadraoMousePressed
         //Menssagem de status do programa
-        lbStatus.setText("Aguarde...");
+        flagStatus = 1;
     }//GEN-LAST:event_btnPadraoMousePressed
 
     private void btnAplicarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnAplicarKeyReleased
@@ -454,7 +454,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void btnAplicarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAplicarMousePressed
         //Menssagem de status do programa
-        lbStatus.setText("Aguarde...");
+        flagStatus = 1;
     }//GEN-LAST:event_btnAplicarMousePressed
 
     private void btnPadraoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPadraoKeyReleased
@@ -465,17 +465,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void btnLeituraKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnLeituraKeyReleased
         if (evt.getKeyCode() == evt.VK_ENTER) {
-            //Painel de leitura da remota
-            Leitura leitura = new Leitura(this, true, controleAplicativo);
+            leitura();
             //Menssagem de status do programa
-            lbStatus.setText("Concluído");
-            leitura.setVisible(true);
+            flagStatus = 2;
         }
     }//GEN-LAST:event_btnLeituraKeyReleased
 
     private void btnLeituraMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLeituraMousePressed
         //Menssagem de status do programa
-        lbStatus.setText("Aguarde...");
+        flagStatus = 1;
     }//GEN-LAST:event_btnLeituraMousePressed
 
     /**
@@ -535,35 +533,42 @@ public class TelaPrincipal extends javax.swing.JFrame {
     //**************************************************************************
     //Seleciona porta COM
     private void selecionar() {
-        //Verifica se existe uma porta selecionada
-        if(cbPortas.getSelectedItem() != (null)){
-            //Verifica se porta COM selecionada e valida
-            if (controleAplicativo.selecionarPorta((String) cbPortas.getSelectedItem()).equals("ok\r")) {
-                //Busca as configurações da remota
-                buscar();
-
-                //Ativar botões e campos
-                btnPadrao.setEnabled(true);
-                btnAplicar.setEnabled(true);
-                btnFinalizar.setEnabled(true);
-                btnSelecionar.setEnabled(false);
+        
+        Runnable r = new Runnable(){
+            public void run(){
                 btnAtualizar.setEnabled(false);
-                btnLeitura.setEnabled(true);
-                txtSlaveadd.setEnabled(true);
-                cbPortas.setEnabled(false);
-            } else {
-                JOptionPane.showMessageDialog(null, "Porta Selecionada inválida!", "Alerta", JOptionPane.ERROR_MESSAGE);
-                controleAplicativo.fechar();
+                btnSelecionar.setEnabled(false);
+                
+                //Verifica se existe uma porta selecionada
+                if(cbPortas.getSelectedItem() != (null)){
+                    //Verifica se porta COM selecionada e valida
+                    if (controleAplicativo.selecionarPorta((String) cbPortas.getSelectedItem()).equals("ok\r")) {
+                        //Busca as configurações da remota
+                        buscar();
+
+                        //Ativar botões e campos
+                        habilitar(true);
+                        btnSelecionar.setEnabled(false);
+                        btnAtualizar.setEnabled(false);
+                        cbPortas.setEnabled(false);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Porta Selecionada inválida!", "Alerta", JOptionPane.ERROR_MESSAGE);
+                        controleAplicativo.fechar();
+                    }
+                }else{
+                    lbStatus.setText("");
+                    JOptionPane.showMessageDialog(null, "Nenhuma porta COM selecionada. Se necessário click em atualizar.",
+                                "Alerta", JOptionPane.ERROR_MESSAGE);
+                }
             }
-        }else{
-            lbStatus.setText("");
-            JOptionPane.showMessageDialog(null, "Nenhuma porta COM selecionada. Se necessário click em atualizar.",
-                        "Alerta", JOptionPane.ERROR_MESSAGE);
-        }
+        };
+        Thread t = new Thread(r);
+        t.start();
     }
 
     //**************************************************************************
     private void buscar() {
+        limpar();
         //Busca valor atual configurado
         txtSlaveadd.setText(controleAplicativo.comando("get slaveadd"));
         txtInitialRegister.setText(controleAplicativo.comando("get initialregister"));
@@ -576,115 +581,131 @@ public class TelaPrincipal extends javax.swing.JFrame {
         txtFormat.setText(controleAplicativo.comando("get format"));
 
         //Menssagem de status do programa
-        lbStatus.setText("Concluído");
+        flagStatus = 2;
     }
 
     //**************************************************************************
     //Aplica a nova configuração
     private void alterar() {
+        Runnable r = new Runnable(){
+            public void run(){
+                 boolean verifica = true;
+                 habilitar(false);
 
-        boolean verifica = true;
-
-        //Verifica se textField não e nulo
-        if (!txtSlaveadd.getText().trim().equals("")) {
-            if (!controleAplicativo.comando("set slaveadd " + txtSlaveadd.getText().trim()).equals("ok\r")) {
-                verifica = false;
-            }
-            if (!controleAplicativo.comando("set initialregister 33").equals("ok\r")) {
-                verifica = false;
-            }
-            if (!controleAplicativo.comando("set initialinput 1").equals("ok\r")) {
-                verifica = false;
-            }
-            if (!controleAplicativo.comando("set maxpulses 999").equals("ok\r")) {
-                verifica = false;
-            }
-            if (!controleAplicativo.comando("set regsize 2").equals("ok\r")) {
-                verifica = false;
-            }
-            if (!controleAplicativo.comando("set baudrate 9600").equals("ok\r")) {
-                verifica = false;
-            }
-            if (!controleAplicativo.comando("set stopbits 1").equals("ok\r")) {
-                verifica = false;
-            }
-            if (!controleAplicativo.comando("set parity 0").equals("ok\r")) {
-                verifica = false;
-            }
-            if (!controleAplicativo.comando("set format bin").equals("ok\r")) {
-                verifica = false;
-            }
-            //Verifica-se todos os comandos foram enviado com sucesso
-            if (verifica) {
-                //verifica se as alterações foram salvas
-                if (!controleAplicativo.comando("save").equals("ok\r")) {//Caso tenha um problema em salvar as configurações
-                    JOptionPane.showMessageDialog(null, "Ocorreu um problema em salvar as configurações! Tente novamente.",
-                            "Alerta", JOptionPane.ERROR_MESSAGE);
-                    controleAplicativo.fechar();
-                } else {//Caso comando foi salvo na remota com sucesso
-                    //Busca as configurações da remota
-                    buscar();
+                //Verifica se textField não e nulo
+                if (!txtSlaveadd.getText().trim().equals("")) {
+                    if (!controleAplicativo.comando("set slaveadd " + txtSlaveadd.getText().trim()).equals("ok\r")) {
+                        verifica = false;
+                    }
+                    if (!controleAplicativo.comando("set initialregister 33").equals("ok\r")) {
+                        verifica = false;
+                    }
+                    if (!controleAplicativo.comando("set initialinput 1").equals("ok\r")) {
+                        verifica = false;
+                    }
+                    if (!controleAplicativo.comando("set maxpulses 999").equals("ok\r")) {
+                        verifica = false;
+                    }
+                    if (!controleAplicativo.comando("set regsize 2").equals("ok\r")) {
+                        verifica = false;
+                    }
+                    if (!controleAplicativo.comando("set baudrate 9600").equals("ok\r")) {
+                        verifica = false;
+                    }
+                    if (!controleAplicativo.comando("set stopbits 1").equals("ok\r")) {
+                        verifica = false;
+                    }
+                    if (!controleAplicativo.comando("set parity 0").equals("ok\r")) {
+                        verifica = false;
+                    }
+                    if (!controleAplicativo.comando("set format bin").equals("ok\r")) {
+                        verifica = false;
+                    }
+                    //Verifica-se todos os comandos foram enviado com sucesso
+                    if (verifica) {
+                        //verifica se as alterações foram salvas
+                        if (!controleAplicativo.comando("save").equals("ok\r")) {//Caso tenha um problema em salvar as configurações
+                            JOptionPane.showMessageDialog(null, "Ocorreu um problema em salvar as configurações! Tente novamente.",
+                                    "Alerta", JOptionPane.ERROR_MESSAGE);
+                            controleAplicativo.fechar();
+                        } else {//Caso comando foi salvo na remota com sucesso
+                            //Busca as configurações da remota
+                            buscar();
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Ocorreu um problema em alterar as configurações! Tente novamente.",
+                                "Alerta", JOptionPane.ERROR_MESSAGE);
+                        controleAplicativo.fechar();
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Preencha campo corretamente.", "Alerta", JOptionPane.ERROR_MESSAGE);
                 }
-            } else {
-                JOptionPane.showMessageDialog(null, "Ocorreu um problema em alterar as configurações! Tente novamente.",
-                        "Alerta", JOptionPane.ERROR_MESSAGE);
-                controleAplicativo.fechar();
+                habilitar(true);
             }
-        } else {
-            JOptionPane.showMessageDialog(null, "Preencha campo corretamente.", "Alerta", JOptionPane.ERROR_MESSAGE);
-        }
-
+        };
+        Thread t = new Thread(r);
+        t.start();
+        
     }
 
     //**************************************************************************
     private void padrao() {
-        boolean verifica = true;
+        Runnable r = new Runnable(){
+            public void run(){
+                boolean verifica = true;
+                habilitar(false);
 
-        //Aplica a configuração padrão
-        if (!controleAplicativo.comando("set slaveadd 1").equals("ok\r")) {
-            verifica = false;
-        }
-        if (!controleAplicativo.comando("set initialregister 33").equals("ok\r")) {
-            verifica = false;
-        }
-        if (!controleAplicativo.comando("set initialinput 1").equals("ok\r")) {
-            verifica = false;
-        }
-        if (!controleAplicativo.comando("set maxpulses 999").equals("ok\r")) {
-            verifica = false;
-        }
-        if (!controleAplicativo.comando("set regsize 2").equals("ok\r")) {
-            verifica = false;
-        }
-        if (!controleAplicativo.comando("set baudrate 9600").equals("ok\r")) {
-            verifica = false;
-        }
-        if (!controleAplicativo.comando("set stopbits 1").equals("ok\r")) {
-            verifica = false;
-        }
-        if (!controleAplicativo.comando("set parity 0").equals("ok\r")) {
-            verifica = false;
-        }
-        if (!controleAplicativo.comando("set format bin").equals("ok\r")) {
-            verifica = false;
-        }
+                //Aplica a configuração padrão
+                if (!controleAplicativo.comando("set slaveadd 1").equals("ok\r")) {
+                    verifica = false;
+                }
+                if (!controleAplicativo.comando("set initialregister 33").equals("ok\r")) {
+                    verifica = false;
+                }
+                if (!controleAplicativo.comando("set initialinput 1").equals("ok\r")) {
+                    verifica = false;
+                }
+                if (!controleAplicativo.comando("set maxpulses 999").equals("ok\r")) {
+                    verifica = false;
+                }
+                if (!controleAplicativo.comando("set regsize 2").equals("ok\r")) {
+                    verifica = false;
+                }
+                if (!controleAplicativo.comando("set baudrate 9600").equals("ok\r")) {
+                    verifica = false;
+                }
+                if (!controleAplicativo.comando("set stopbits 1").equals("ok\r")) {
+                    verifica = false;
+                }
+                if (!controleAplicativo.comando("set parity 0").equals("ok\r")) {
+                    verifica = false;
+                }
+                if (!controleAplicativo.comando("set format bin").equals("ok\r")) {
+                    verifica = false;
+                }
 
-        //Verifica-se todos os comandos foram enviado com sucesso
-        if (verifica) {
-            //verifica se as alterações foram salvas
-            if (!controleAplicativo.comando("save").equals("ok\r")) {//Caso tenha um problema em salvar as configurações
-                JOptionPane.showMessageDialog(null, "Ocorreu um problema em salvar as configurações! Tente novamente.",
-                        "Alerta", JOptionPane.ERROR_MESSAGE);
-                controleAplicativo.fechar();
-            } else { //Caso comando foi salvo na remota com sucesso
-                //Busca as configurações da remota
-                buscar();
+                //Verifica-se todos os comandos foram enviado com sucesso
+                if (verifica) {
+                    //verifica se as alterações foram salvas
+                    if (!controleAplicativo.comando("save").equals("ok\r")) {//Caso tenha um problema em salvar as configurações
+                        JOptionPane.showMessageDialog(null, "Ocorreu um problema em salvar as configurações! Tente novamente.",
+                                "Alerta", JOptionPane.ERROR_MESSAGE);
+                        controleAplicativo.fechar();
+                    } else { //Caso comando foi salvo na remota com sucesso
+                        //Busca as configurações da remota
+                        buscar();
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Ocorreu um problema em alterar as configurações! Tente novamente.",
+                            "Alerta", JOptionPane.ERROR_MESSAGE);
+                    controleAplicativo.fechar();
+                }
+                habilitar(true);
             }
-        } else {
-            JOptionPane.showMessageDialog(null, "Ocorreu um problema em alterar as configurações! Tente novamente.",
-                    "Alerta", JOptionPane.ERROR_MESSAGE);
-            controleAplicativo.fechar();
-        }
+        };
+        Thread t = new Thread(r);
+        t.start();      
+        
     }
 
     //**************************************************************************
@@ -719,6 +740,50 @@ public class TelaPrincipal extends javax.swing.JFrame {
         lbStatus.setText("");
     }
 
+    //**************************************************************************
+    private void leitura(){
+        habilitar(false);
+        //Painel de leitura da remota
+        Leitura leitura = new Leitura(this, true, controleAplicativo);
+        leitura.setVisible(true);
+        habilitar(true);
+    }
+    
+    //**************************************************************************
+    private void status(){
+        Runnable r = new Runnable(){
+            public void run(){
+                String msg[] = {".", "..", "..."};
+                for(int i = 0; ; i++){
+                    if(i > 2) i = 0;      
+                    if(flagStatus == 0)
+                        lbStatus.setText("");
+                    if(flagStatus == 1)
+                        lbStatus.setText("Aguarde" + msg[i]);
+                    if(flagStatus == 2)
+                        lbStatus.setText("Concluído.");
+                    //Tempo de espera
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException ex) {
+                        System.out.println("Erro na Thread de status do programa: " + ex);
+                    }
+                }
+            }  
+        };
+        Thread t = new Thread(r);
+        t.start();
+    }
+    
+    //**************************************************************************
+    private void habilitar(boolean op){
+        txtSlaveadd.setEnabled(op);
+        btnFinalizar.setEnabled(op);
+        btnAplicar.setEnabled(op);
+        btnLeitura.setEnabled(op);
+        btnPadrao.setEnabled(op);        
+    }
+    
     //**************************************************************************
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
