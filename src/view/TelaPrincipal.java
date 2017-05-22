@@ -82,7 +82,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("ECOflow v0.6.3");
+        setTitle("ECOflow v0.6.4");
         setIconImages(null);
         setName("framePrincipal"); // NOI18N
         setResizable(false);
@@ -405,8 +405,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void btnLeituraKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnLeituraKeyReleased
         if (evt.getKeyCode() == evt.VK_ENTER) {
             leitura();
-            //Menssagem de status do programa
-            flagStatus = 2;
         }
     }//GEN-LAST:event_btnLeituraKeyReleased
 
@@ -557,11 +555,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     //Verifica-se todos os comandos foram enviado com sucesso
                     if (verifica) {
                         //verifica se as alterações foram salvas
-                        if (!controleAplicativo.comando("save").equals("ok\r")) {//Caso tenha um problema em salvar as configurações
+                        if (!controleAplicativo.comando("save").equals("ok\r")) {   //Caso tenha um problema em salvar as configurações
                             JOptionPane.showMessageDialog(null, "Ocorreu um problema em salvar as configurações! Tente novamente.",
                                     "Alerta", JOptionPane.ERROR_MESSAGE);
                             controleAplicativo.fechar();
-                        } else {//Caso comando foi salvo na remota com sucesso
+                        } else {    //Caso comando foi salvo na remota com sucesso
                             //Busca as configurações da remota
                             buscar();
                         }
@@ -622,11 +620,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 //Verifica-se todos os comandos foram enviado com sucesso
                 if (verifica) {
                     //verifica se as alterações foram salvas
-                    if (!controleAplicativo.comando("save").equals("ok\r")) {//Caso tenha um problema em salvar as configurações
+                    if (!controleAplicativo.comando("save").equals("ok\r")) {   //Caso tenha um problema em salvar as configurações
                         JOptionPane.showMessageDialog(null, "Ocorreu um problema em salvar as configurações! Tente novamente.",
                                 "Alerta", JOptionPane.ERROR_MESSAGE);
                         controleAplicativo.fechar();
-                    } else { //Caso comando foi salvo na remota com sucesso
+                    } else {    //Caso comando foi salvo na remota com sucesso
                         //Busca as configurações da remota
                         buscar();
                     }
@@ -676,7 +674,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         txtStopBits.setText(null);
         txtParity.setText(null);
         txtFormat.setText(null);
-        lbStatus.setText("");
     }
 
     //**************************************************************************
