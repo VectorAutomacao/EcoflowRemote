@@ -82,7 +82,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("ECOflow v0.6.4");
+        setTitle("ECOflow v0.7.1");
         setIconImages(null);
         setName("framePrincipal"); // NOI18N
         setResizable(false);
@@ -528,28 +528,28 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     if (!controleAplicativo.comando("set slaveadd " + txtSlaveadd.getText().trim()).equals("ok\r")) {
                         verifica = false;
                     }
-                    if (!controleAplicativo.comando("set initialregister 33").equals("ok\r")) {
+                    if (!controleAplicativo.comando("set initialregister " + txtInitialRegister.getText().trim()).equals("ok\r")) {
                         verifica = false;
                     }
-                    if (!controleAplicativo.comando("set initialinput 1").equals("ok\r")) {
+                    if (!controleAplicativo.comando("set initialinput " + txtInitialInput.getText().trim()).equals("ok\r")) {
                         verifica = false;
                     }
-                    if (!controleAplicativo.comando("set maxpulses 999").equals("ok\r")) {
+                    if (!controleAplicativo.comando("set maxpulses " + txtMaxpulses.getText().trim()).equals("ok\r")) {
                         verifica = false;
                     }
-                    if (!controleAplicativo.comando("set regsize 2").equals("ok\r")) {
+                    if (!controleAplicativo.comando("set regsize " + txtRegSize.getText().trim()).equals("ok\r")) {
                         verifica = false;
                     }
-                    if (!controleAplicativo.comando("set baudrate 9600").equals("ok\r")) {
+                    if (!controleAplicativo.comando("set baudrate " + txtBaudrate.getText().trim()).equals("ok\r")) {
                         verifica = false;
                     }
-                    if (!controleAplicativo.comando("set stopbits 1").equals("ok\r")) {
+                    if (!controleAplicativo.comando("set stopbits " + txtStopBits.getText().trim()).equals("ok\r")) {
                         verifica = false;
                     }
-                    if (!controleAplicativo.comando("set parity 0").equals("ok\r")) {
+                    if (!controleAplicativo.comando("set parity " + txtParity.getText().trim()).equals("ok\r")) {
                         verifica = false;
                     }
-                    if (!controleAplicativo.comando("set format bin").equals("ok\r")) {
+                    if (!controleAplicativo.comando("set format " + txtFormat.getText().trim()).equals("ok\r")) {
                         verifica = false;
                     }
                     //Verifica-se todos os comandos foram enviado com sucesso
@@ -653,6 +653,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnAtualizar.setEnabled(true);
         btnLeitura.setEnabled(false);
         txtSlaveadd.setEnabled(false);
+        txtInitialRegister.setEnabled(false);
+        txtInitialInput.setEnabled(false);
+        txtMaxpulses.setEnabled(false);
+        txtRegSize.setEnabled(false);
+        txtBaudrate.setEnabled(false);
+        txtStopBits.setEnabled(false);
+        txtParity.setEnabled(false);
+        txtFormat.setEnabled(false);
         cbPortas.setEnabled(true);
         
         //Finalizar comunicação com a porta COM
@@ -715,10 +723,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
     //**************************************************************************
     private void habilitar(boolean op){
         txtSlaveadd.setEnabled(op);
+        txtInitialRegister.setEnabled(op);
+        txtInitialInput.setEnabled(op);
+        txtMaxpulses.setEnabled(op);
+        txtRegSize.setEnabled(op);
+        txtBaudrate.setEnabled(op);
+        txtStopBits.setEnabled(op);
+        txtParity.setEnabled(op);
+        txtFormat.setEnabled(op);
         btnFinalizar.setEnabled(op);
         btnAplicar.setEnabled(op);
         btnLeitura.setEnabled(op);
-        btnPadrao.setEnabled(op);        
+        btnPadrao.setEnabled(op);       
     }
     
     //**************************************************************************
