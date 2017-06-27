@@ -82,7 +82,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("ECOflow v0.7.1");
+        setTitle("ECOflow v0.7.2");
         setIconImages(null);
         setName("framePrincipal"); // NOI18N
         setResizable(false);
@@ -141,6 +141,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         txtSlaveadd.setEnabled(false);
         txtSlaveadd.setNextFocusableComponent(btnPadrao);
+        txtSlaveadd.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtSlaveaddFocusGained(evt);
+            }
+        });
         txtSlaveadd.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtSlaveaddKeyTyped(evt);
@@ -148,20 +153,60 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
 
         txtInitialRegister.setEnabled(false);
+        txtInitialRegister.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtInitialRegisterFocusGained(evt);
+            }
+        });
 
         txtInitialInput.setEnabled(false);
+        txtInitialInput.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtInitialInputFocusGained(evt);
+            }
+        });
 
         txtMaxpulses.setEnabled(false);
+        txtMaxpulses.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtMaxpulsesFocusGained(evt);
+            }
+        });
 
         txtRegSize.setEnabled(false);
+        txtRegSize.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtRegSizeFocusGained(evt);
+            }
+        });
 
         txtBaudrate.setEnabled(false);
+        txtBaudrate.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtBaudrateFocusGained(evt);
+            }
+        });
 
         txtParity.setEnabled(false);
+        txtParity.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtParityFocusGained(evt);
+            }
+        });
 
         txtFormat.setEnabled(false);
+        txtFormat.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtFormatFocusGained(evt);
+            }
+        });
 
         txtStopBits.setEnabled(false);
+        txtStopBits.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtStopBitsFocusGained(evt);
+            }
+        });
 
         btnFinalizar.setMnemonic('F');
         btnFinalizar.setText("Finalizar");
@@ -180,7 +225,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         btnSelecionar.setMnemonic('S');
         btnSelecionar.setText("Selecionar");
-        btnSelecionar.setNextFocusableComponent(txtSlaveadd);
         btnSelecionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSelecionarActionPerformed(evt);
@@ -408,6 +452,42 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnLeituraKeyReleased
 
+    private void txtSlaveaddFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtSlaveaddFocusGained
+        txtSlaveadd.setText("");
+    }//GEN-LAST:event_txtSlaveaddFocusGained
+
+    private void txtInitialRegisterFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtInitialRegisterFocusGained
+        txtInitialRegister.setText("");
+    }//GEN-LAST:event_txtInitialRegisterFocusGained
+
+    private void txtInitialInputFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtInitialInputFocusGained
+        txtInitialInput.setText("");
+    }//GEN-LAST:event_txtInitialInputFocusGained
+
+    private void txtMaxpulsesFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMaxpulsesFocusGained
+        txtMaxpulses.setText("");
+    }//GEN-LAST:event_txtMaxpulsesFocusGained
+
+    private void txtRegSizeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtRegSizeFocusGained
+        txtRegSize.setText("");
+    }//GEN-LAST:event_txtRegSizeFocusGained
+
+    private void txtBaudrateFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBaudrateFocusGained
+        txtBaudrate.setText("");
+    }//GEN-LAST:event_txtBaudrateFocusGained
+
+    private void txtStopBitsFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtStopBitsFocusGained
+        txtStopBits.setText("");
+    }//GEN-LAST:event_txtStopBitsFocusGained
+
+    private void txtParityFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtParityFocusGained
+        txtParity.setText("");
+    }//GEN-LAST:event_txtParityFocusGained
+
+    private void txtFormatFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFormatFocusGained
+        txtFormat.setText("");
+    }//GEN-LAST:event_txtFormatFocusGained
+
     /**
      * @param args the command line arguments
      */
@@ -534,10 +614,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     if (!controleAplicativo.comando("set initialinput " + txtInitialInput.getText().trim()).equals("ok\r")) {
                         verifica = false;
                     }
-                    if (!controleAplicativo.comando("set maxpulses " + txtMaxpulses.getText().trim()).equals("ok\r")) {
+                    if (!controleAplicativo.comando("set regsize " + txtRegSize.getText().trim()).equals("ok\r")) {
                         verifica = false;
                     }
-                    if (!controleAplicativo.comando("set regsize " + txtRegSize.getText().trim()).equals("ok\r")) {
+                    if (!controleAplicativo.comando("set maxpulses " + txtMaxpulses.getText().trim()).equals("ok\r")) {
                         verifica = false;
                     }
                     if (!controleAplicativo.comando("set baudrate " + txtBaudrate.getText().trim()).equals("ok\r")) {
@@ -579,7 +659,20 @@ public class TelaPrincipal extends javax.swing.JFrame {
         tAlterar.start();
         
     }
-
+    
+    /*
+    private void alterar() {
+        System.out.println(txtSlaveadd.getText().trim());
+        System.out.println(txtInitialRegister.getText().trim());
+        System.out.println(txtInitialInput.getText().trim());
+        System.out.println(txtRegSize.getText().trim());
+        System.out.println(txtMaxpulses.getText().trim());
+        System.out.println(txtBaudrate.getText().trim());
+        System.out.println(txtStopBits.getText().trim());
+        System.out.println(txtParity.getText().trim());
+        System.out.println(txtFormat.getText().trim());
+    }
+    */
     //**************************************************************************
     private void padrao() {
         Runnable rPadrao = new Runnable(){

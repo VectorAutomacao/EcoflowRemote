@@ -25,7 +25,7 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="title" type="java.lang.String" value="ECOflow v0.7.1"/>
+    <Property name="title" type="java.lang.String" value="ECOflow v0.7.2"/>
     <Property name="iconImages" type="java.util.List" editor="org.netbeans.modules.form.ComponentChooserEditor">
       <ComponentRef name="null"/>
     </Property>
@@ -280,6 +280,7 @@
         </Property>
       </Properties>
       <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtSlaveaddFocusGained"/>
         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtSlaveaddKeyTyped"/>
       </Events>
     </Component>
@@ -287,41 +288,68 @@
       <Properties>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtInitialRegisterFocusGained"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtInitialInput">
       <Properties>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtInitialInputFocusGained"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtMaxpulses">
       <Properties>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtMaxpulsesFocusGained"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="TelaPrincipal_txtMaxpulses"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JTextField" name="txtRegSize">
       <Properties>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtRegSizeFocusGained"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtBaudrate">
       <Properties>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtBaudrateFocusGained"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtParity">
       <Properties>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtParityFocusGained"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtFormat">
       <Properties>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtFormatFocusGained"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtStopBits">
       <Properties>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtStopBitsFocusGained"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnFinalizar">
       <Properties>
@@ -341,9 +369,6 @@
       <Properties>
         <Property name="mnemonic" type="int" value="83"/>
         <Property name="text" type="java.lang.String" value="Selecionar"/>
-        <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="txtSlaveadd"/>
-        </Property>
       </Properties>
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value=""/>
