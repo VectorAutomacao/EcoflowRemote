@@ -82,7 +82,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("ECOflow v0.7.2");
+        setTitle("ECOflow v0.7.3");
         setIconImages(null);
         setName("framePrincipal"); // NOI18N
         setResizable(false);
@@ -158,11 +158,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 txtInitialRegisterFocusGained(evt);
             }
         });
+        txtInitialRegister.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtInitialRegisterKeyTyped(evt);
+            }
+        });
 
         txtInitialInput.setEnabled(false);
         txtInitialInput.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtInitialInputFocusGained(evt);
+            }
+        });
+        txtInitialInput.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtInitialInputKeyTyped(evt);
             }
         });
 
@@ -172,11 +182,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 txtMaxpulsesFocusGained(evt);
             }
         });
+        txtMaxpulses.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtMaxpulsesKeyTyped(evt);
+            }
+        });
 
         txtRegSize.setEnabled(false);
         txtRegSize.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtRegSizeFocusGained(evt);
+            }
+        });
+        txtRegSize.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtRegSizeKeyTyped(evt);
             }
         });
 
@@ -186,11 +206,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 txtBaudrateFocusGained(evt);
             }
         });
+        txtBaudrate.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtBaudrateKeyTyped(evt);
+            }
+        });
 
         txtParity.setEnabled(false);
         txtParity.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtParityFocusGained(evt);
+            }
+        });
+        txtParity.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtParityKeyTyped(evt);
             }
         });
 
@@ -205,6 +235,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         txtStopBits.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtStopBitsFocusGained(evt);
+            }
+        });
+        txtStopBits.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtStopBitsKeyTyped(evt);
             }
         });
 
@@ -488,6 +523,62 @@ public class TelaPrincipal extends javax.swing.JFrame {
         txtFormat.setText("");
     }//GEN-LAST:event_txtFormatFocusGained
 
+    private void txtInitialRegisterKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtInitialRegisterKeyTyped
+        String caracteres = "0987654321";//String com caractes validos
+        //Verifica se caracter e valido
+        if (!caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtInitialRegisterKeyTyped
+
+    private void txtInitialInputKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtInitialInputKeyTyped
+        String caracteres = "0987654321";//String com caractes validos
+        //Verifica se caracter e valido
+        if (!caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtInitialInputKeyTyped
+
+    private void txtMaxpulsesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMaxpulsesKeyTyped
+        String caracteres = "0987654321";//String com caractes validos
+        //Verifica se caracter e valido
+        if (!caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtMaxpulsesKeyTyped
+
+    private void txtRegSizeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRegSizeKeyTyped
+        String caracteres = "0987654321";//String com caractes validos
+        //Verifica se caracter e valido
+        if (!caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtRegSizeKeyTyped
+
+    private void txtBaudrateKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBaudrateKeyTyped
+        String caracteres = "0987654321";//String com caractes validos
+        //Verifica se caracter e valido
+        if (!caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtBaudrateKeyTyped
+
+    private void txtStopBitsKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtStopBitsKeyTyped
+        String caracteres = "0987654321";//String com caractes validos
+        //Verifica se caracter e valido
+        if (!caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtStopBitsKeyTyped
+
+    private void txtParityKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtParityKeyTyped
+        String caracteres = "0987654321";//String com caractes validos
+        //Verifica se caracter e valido
+        if (!caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtParityKeyTyped
+
     /**
      * @param args the command line arguments
      */
@@ -604,7 +695,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
                  habilitar(false);
 
                 //Verifica se textField não e nulo
-                if (!txtSlaveadd.getText().trim().equals("")) {
+                if (
+                        !txtSlaveadd.getText().equals("") &&
+                        !txtInitialRegister.getText().equals("") &&
+                        !txtInitialInput.getText().equals("") &&
+                        !txtRegSize.getText().equals("") &&
+                        !txtMaxpulses.getText().equals("") &&
+                        !txtBaudrate.getText().equals("") &&
+                        !txtStopBits.getText().equals("") &&
+                        !txtParity.getText().equals("") &&
+                        !txtFormat.getText().equals("")
+                    ) {
                     if (!controleAplicativo.comando("set slaveadd " + txtSlaveadd.getText().trim()).equals("ok\r")) {
                         verifica = false;
                     }
@@ -649,7 +750,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         controleAplicativo.fechar();
                     }
                 } else {
-                    JOptionPane.showMessageDialog(null, "Preencha campo corretamente.", "Alerta", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Preencha os campos corretamente.", "Alerta", JOptionPane.ERROR_MESSAGE);
                 }
                 habilitar(true);
                 flagStatus = 2;
