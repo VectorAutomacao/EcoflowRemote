@@ -40,7 +40,7 @@ public class ControlarAplicativo {
         
         //Enviar string
         controleSerialCom.HabilitarEscrita();
-        controleSerialCom.escrita(serialCom, "\r");
+        controleSerialCom.escrita(serialCom, '\r');
         controleSerialCom.HabilitarLeitura();
         
         //Tempo de espera para retonar uma resposta
@@ -67,7 +67,7 @@ public class ControlarAplicativo {
         controleSerialCom.HabilitarEscrita();
         
         for(i = 0; i < msg.length(); i++) 
-            controleSerialCom.escrita(serialCom, String.valueOf(msg.charAt(i)) );
+            controleSerialCom.escrita(serialCom, msg.charAt(i) );
         
         controleSerialCom.HabilitarLeitura();
         

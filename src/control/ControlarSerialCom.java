@@ -110,7 +110,7 @@ public class ControlarSerialCom implements Runnable, SerialPortEventListener {
 
     //**************************************************************************
     /*Saida de de dados da porta serial*/
-    public void escrita(SerialCom serialCom, String msgSaida) {
+    public void escrita(SerialCom serialCom, char msgSaida) {
 
         if (escrita == true && leitura == false) {
 
@@ -126,7 +126,7 @@ public class ControlarSerialCom implements Runnable, SerialPortEventListener {
             try {
                 //System.out.println("Enviando um byte para " + serialCom.getNome());
                 //System.out.println("Enviando : " + msgSaida);
-                saida.write(msgSaida.getBytes());
+                saida.write(msgSaida);
                 Thread.sleep(20);
                 saida.flush();
 
