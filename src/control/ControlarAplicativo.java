@@ -9,6 +9,8 @@ public class ControlarAplicativo {
     private ArrayList<SerialCom> listaSerialCom = new ArrayList<>();
     private SerialCom serialCom;
     
+    private final int TEMPO_RESPOSTA = 500;
+    
     //**************************************************************************
 
     public ControlarAplicativo() {
@@ -43,7 +45,7 @@ public class ControlarAplicativo {
         
         //Tempo de espera para retonar uma resposta
         try {
-            Thread.sleep(500);
+            Thread.sleep(TEMPO_RESPOSTA);
         } catch (InterruptedException ex) {
             System.out.println("Erro na Thread: " + ex);
         }
@@ -55,20 +57,31 @@ public class ControlarAplicativo {
     //**************************************************************************
     /*Metodo para enviar comando status*/
     public String comando(String msgSaida){
+        String msg = msgSaida + "\r";
+        String resp;
+        int i;
+        
+        System.out.println("Comando: " + msgSaida);
         
         //Enviar string
         controleSerialCom.HabilitarEscrita();
-        controleSerialCom.escrita(serialCom, msgSaida + "\r");
+        
+        for(i = 0; i < msg.length(); i++) 
+            controleSerialCom.escrita(serialCom, String.valueOf(msg.charAt(i)) );
+        
         controleSerialCom.HabilitarLeitura();
         
         //Tempo de espera para retonar uma resposta
         try {
-            Thread.sleep(500);
+            Thread.sleep(TEMPO_RESPOSTA);
         } catch (InterruptedException ex) {
             System.out.println("Erro na Thread: " + ex);
         }
         
-        return controleSerialCom.getMsgEntrada();
+        resp = controleSerialCom.getMsgEntrada();
+        System.out.println("Resposta: " + resp);
+        
+        return resp;
         
     }
     

@@ -116,7 +116,7 @@ public class ControlarSerialCom implements Runnable, SerialPortEventListener {
 
             try {
                 saida = porta.getOutputStream();
-                System.out.println("FLUXO OK!");
+                //System.out.println("FLUXO OK!");
 
             } catch (Exception e) {
                 System.out.println("Erro.STATUS: " + e);
@@ -124,10 +124,10 @@ public class ControlarSerialCom implements Runnable, SerialPortEventListener {
             }
 
             try {
-                System.out.println("Enviando um byte para " + serialCom.getNome());
-                System.out.println("Enviando : " + msgSaida);
+                //System.out.println("Enviando um byte para " + serialCom.getNome());
+                //System.out.println("Enviando : " + msgSaida);
                 saida.write(msgSaida.getBytes());
-                Thread.sleep(100);
+                Thread.sleep(20);
                 saida.flush();
 
             } catch (Exception e) {
@@ -227,7 +227,7 @@ public class ControlarSerialCom implements Runnable, SerialPortEventListener {
                     }
                 }
                 msgEntrada = new String(bufferLeitura);
-                System.out.println("Recebido: " + msgEntrada);
+                //System.out.println("Recebido: " + msgEntrada);
                 break;
         }
     }
